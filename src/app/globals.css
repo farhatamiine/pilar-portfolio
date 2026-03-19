@@ -31,6 +31,7 @@ html {
 body {
   min-height: 100vh;
   background-color: var(--paper);
+  color: var(--text);
 }
 
 @media (prefers-reduced-motion: no-preference) {
