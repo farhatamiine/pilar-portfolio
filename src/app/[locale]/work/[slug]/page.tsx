@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const { locale, slug } = await params
   try {
     const project = await getProjectBySlug(slug, locale)
+    if (!project) return { title: 'Pilar Olivero' }
     return {
       title: project.title,
       description: project.shortDescription ?? undefined,
