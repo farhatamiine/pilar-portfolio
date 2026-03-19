@@ -1,0 +1,79 @@
+import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+import { getAllProjects, getProjectBySlug } from '@/lib/hygraph'
+import { locales, type Locale } from '../../../../../i18n'
+import { ProjectHero } from '@/components/project/ProjectHero'
+import { ProjectStatement } from '@/components/project/ProjectStatement'
+import { StageDivider } from '@/components/project/StageDivider'
+import { Gallery } from '@/components/project/Gallery'
+import { ProjectNav } from '@/components/project/ProjectNav'
+
+interface ProjectPageProps {
+  params: Promise<{ locale: string; slug: string }>
+}
+
+export async function generateStaticParams() {
+  const params: { locale: string; slug: string }[] = []
+  for (const locale of locales) {
+    try {
+      const projects = await getAllProjects(locale)
+      for (const project of projects) {
+        params.push({ locale, slug: project.slug })
+      }
+    } catch {
+      // CMS may not be reachable at build time in CI — return empty array
+    }
+  }
+  return params
+}
+
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const { locale, slug } = await params
+  try {
+    const project = await getProjectBySlug(slug, locale)
+    return {
+      title: project.title,
+      description: project.shortDescription ?? undefined,
+      openGraph: {
+        title: project.title,
+        images: project.coverImage?.url ? [{ url: project.coverImage.url }] : [],
+      },
+    }
+  } catch {
+    return { title: 'Pilar Olivero' }
+  }
+}
+
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { locale, slug } = await params
+  if (!locales.includes(locale as Locale)) notFound()
+
+  let project
+  try {
+    project = await getProjectBySlug(slug, locale)
+  } catch {
+    notFound()
+  }
+  if (!project) notFound()
+
+  const allProjects = await getAllProjects(locale)
+  const idx = allProjects.findIndex((p) => p.slug === slug)
+  const prev = idx > 0 ? allProjects[idx - 1] : null
+  const next = idx < allProjects.length - 1 ? allProjects[idx + 1] : null
+
+  return (
+    <article>
+      <ProjectHero coverImage={project.coverImage} featuredImage={project.featuredImage} title={project.title} />
+      <div className="px-4 md:px-8 max-w-[680px] mx-auto mt-10">
+        <h1 className="font-cormorant italic text-5xl md:text-6xl text-ink leading-tight">{project.title}</h1>
+        <p className="font-mono text-sm text-muted mt-2">{project.year}{project.subtitle ? ` · ${project.subtitle}` : ''}</p>
+      </div>
+      <ProjectStatement description={project.description} />
+      {project.hasTwoStages && project.stageTwoContent && (
+        <StageDivider stageTwoContent={project.stageTwoContent} />
+      )}
+      <Gallery images={project.gallery} title={project.title} />
+      <ProjectNav prev={prev} next={next} locale={locale} />
+    </article>
+  )
+}

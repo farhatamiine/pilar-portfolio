@@ -2,8 +2,11 @@ import { render, screen } from '@testing-library/react'
 import { LocaleSwitcher } from '@/components/ui/LocaleSwitcher'
 
 jest.mock('next-intl', () => ({
-  usePathname: () => '/work/changement-detat',
   useLocale: () => 'fr',
+}))
+
+jest.mock('next/navigation', () => ({
+  usePathname: () => '/fr/work/changement-detat',
 }))
 
 jest.mock('next/link', () => {
