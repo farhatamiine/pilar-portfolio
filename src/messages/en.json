@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "tagline": "Multidisciplinary artist · Paris"
+  },
+  "project": {
+    "next": "Next project",
+    "previous": "Previous project",
+    "back": "Back to work"
+  },
+  "about": {
+    "cvTitle": "CV",
+    "solo": "Solo exhibitions",
+    "collective": "Collective exhibitions",
+    "residency": "Residencies",
+    "publication": "Publications & talks"
+  },
+  "contact": {
+    "intro": "Available for collaborations, residencies, and exhibitions.",
+    "name": "Name",
+    "email": "Email address",
+    "message": "Message",
+    "submit": "Send",
+    "success": "Message sent ✓",
+    "error": "Something went wrong. Please try again or write directly to"
+  }
+}

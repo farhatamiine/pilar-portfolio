@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "work": "Travaux",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "home": {
+    "tagline": "Artiste multidisciplinaire · Paris"
+  },
+  "project": {
+    "next": "Projet suivant",
+    "previous": "Projet précédent",
+    "back": "Retour aux travaux"
+  },
+  "about": {
+    "cvTitle": "Parcours",
+    "solo": "Expositions individuelles",
+    "collective": "Expositions collectives",
+    "residency": "Résidences",
+    "publication": "Publications & conférences"
+  },
+  "contact": {
+    "intro": "Disponible pour collaborations, résidences et expositions.",
+    "name": "Nom",
+    "email": "Adresse e-mail",
+    "message": "Message",
+    "submit": "Envoyer",
+    "success": "Message envoyé ✓",
+    "error": "Une erreur est survenue. Veuillez réessayer ou écrire directement à"
+  }
+}

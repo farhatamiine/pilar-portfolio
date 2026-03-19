@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "work": "Obras",
+    "about": "Sobre mí",
+    "contact": "Contacto"
+  },
+  "home": {
+    "tagline": "Artista multidisciplinaria · París"
+  },
+  "project": {
+    "next": "Proyecto siguiente",
+    "previous": "Proyecto anterior",
+    "back": "Volver a obras"
+  },
+  "about": {
+    "cvTitle": "Trayectoria",
+    "solo": "Exposiciones individuales",
+    "collective": "Exposiciones colectivas",
+    "residency": "Residencias",
+    "publication": "Publicaciones y conferencias"
+  },
+  "contact": {
+    "intro": "Disponible para colaboraciones, residencias y exposiciones.",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "submit": "Enviar",
+    "success": "Mensaje enviado ✓",
+    "error": "Ocurrió un error. Por favor intenta de nuevo o escribe directamente a"
+  }
+}
