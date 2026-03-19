@@ -4,7 +4,6 @@ import { getAllProjects, getProjectBySlug } from '@/lib/hygraph'
 import { locales, type Locale } from '../../../../../i18n'
 import { ProjectHero } from '@/components/project/ProjectHero'
 import { ProjectStatement } from '@/components/project/ProjectStatement'
-import { StageDivider } from '@/components/project/StageDivider'
 import { Gallery } from '@/components/project/Gallery'
 import { ProjectNav } from '@/components/project/ProjectNav'
 
@@ -69,9 +68,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <p className="font-mono text-sm text-muted mt-2">{project.year}{project.subtitle ? ` · ${project.subtitle}` : ''}</p>
       </div>
       <ProjectStatement description={project.description} />
-      {project.hasTwoStages && project.stageTwoContent && (
-        <StageDivider stageTwoContent={project.stageTwoContent} />
-      )}
       <Gallery images={project.gallery} title={project.title} />
       <ProjectNav prev={prev} next={next} locale={locale} />
     </article>

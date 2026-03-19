@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'media.graphassets.com' },
       { protocol: 'https', hostname: 'eu-west-2.graphassets.com' },
       { protocol: 'https', hostname: 'eu-west-2.cdn.hygraph.com' },
+      { protocol: 'https', hostname: 'picsum.photos' },
+      { protocol: 'https', hostname: 'fastly.picsum.photos' },
     ],
   },
 }

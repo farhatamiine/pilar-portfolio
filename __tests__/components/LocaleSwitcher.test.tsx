@@ -2,11 +2,11 @@ import { render, screen } from '@testing-library/react'
 import { LocaleSwitcher } from '@/components/ui/LocaleSwitcher'
 
 jest.mock('next-intl', () => ({
-  useLocale: () => 'fr',
+  useLocale: () => 'en',
 }))
 
 jest.mock('next/navigation', () => ({
-  usePathname: () => '/fr/work/changement-detat',
+  usePathname: () => '/en/work/changement-detat',
 }))
 
 jest.mock('next/link', () => {
@@ -15,20 +15,19 @@ jest.mock('next/link', () => {
   }
 })
 
-test('renders all three locale labels', () => {
+test('renders both locale labels', () => {
   render(<LocaleSwitcher />)
-  expect(screen.getByText('FR')).toBeInTheDocument()
   expect(screen.getByText('ES')).toBeInTheDocument()
   expect(screen.getByText('EN')).toBeInTheDocument()
 })
 
 test('active locale link has text-accent class', () => {
   render(<LocaleSwitcher />)
-  const frLink = screen.getByText('FR').closest('a')
-  expect(frLink).toHaveClass('text-accent')
+  const enLink = screen.getByText('EN').closest('a')
+  expect(enLink).toHaveClass('text-accent')
 })
 
-test('inactive locales link to correct paths', () => {
+test('inactive locale links to correct path', () => {
   render(<LocaleSwitcher />)
   const esLink = screen.getByText('ES').closest('a')
   expect(esLink).toHaveAttribute('href', '/es/work/changement-detat')

@@ -23,7 +23,7 @@ export async function generateMetadata({
   }
   return {
     title: { default: 'Pilar Olivero', template: '%s — Pilar Olivero' },
-    description: descriptions[locale] ?? descriptions.fr,
+    description: descriptions[locale] ?? descriptions.en,
     metadataBase: new URL('https://pilarolivero.com'),
     openGraph: { type: 'website', siteName: 'Pilar Olivero' },
   }
@@ -39,7 +39,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <NoiseOverlay />
       <NextIntlClientProvider messages={messages}>
         <Nav locale={locale} />
-        <main className="pt-20 min-h-screen">{children}</main>
+        <main>{children}</main>
         <Footer />
       </NextIntlClientProvider>
     </>

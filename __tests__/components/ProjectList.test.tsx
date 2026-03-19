@@ -7,7 +7,7 @@ const mockProjects: ProjectSummary[] = [
   { id: '2', title: 'La Tisseuse', slug: 'la-tisseuse', year: 2025, subtitle: null, shortDescription: null, featuredImage: null, order: 2 },
 ]
 
-jest.mock('next-intl', () => ({ useLocale: () => 'fr' }))
+jest.mock('next-intl', () => ({ useLocale: () => 'en' }))
 jest.mock('framer-motion', () => ({
   motion: {
     span: ({ children, ...props }: React.HTMLAttributes<HTMLSpanElement>) => <span {...props}>{children}</span>,
@@ -35,6 +35,6 @@ test('renders zero-padded index numbers', () => {
 test('each project item links to correct locale + slug path', () => {
   render(<ProjectList projects={mockProjects} />)
   const links = screen.getAllByRole('link')
-  const slugLink = links.find(l => l.getAttribute('href') === '/fr/work/changement-detat')
+  const slugLink = links.find(l => l.getAttribute('href') === '/en/work/changement-detat')
   expect(slugLink).toBeTruthy()
 })

@@ -1,6 +1,12 @@
-import { getSiteMeta, getExhibitions } from '@/lib/hygraph'
-import { Bio } from '@/components/about/Bio'
+import { getAboutPage, getExhibitions } from '@/lib/hygraph'
+import { AboutHero } from '@/components/about/AboutHero'
+import { AboutBio } from '@/components/about/AboutBio'
 import { CVAccordion } from '@/components/about/CVAccordion'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = { title: 'About' }
+
+const MOCK = process.env.NEXT_PUBLIC_MOCK === 'true'
 
 interface AboutPageProps {
   params: Promise<{ locale: string }>
@@ -9,23 +15,23 @@ interface AboutPageProps {
 export default async function AboutPage({ params }: AboutPageProps) {
   const { locale } = await params
 
-  // Both may fail if Hygraph not configured — handle gracefully
-  let siteMeta = null
   let exhibitions: Awaited<ReturnType<typeof getExhibitions>> = []
+  let aboutPage = null
 
-  try {
-    [siteMeta, exhibitions] = await Promise.all([
-      getSiteMeta(locale),
-      getExhibitions(locale),
-    ])
-  } catch {
-    // Graceful fallback when CMS unavailable
+  if (!MOCK) {
+    try {
+      ;[aboutPage, exhibitions] = await Promise.all([
+        getAboutPage(locale),
+        getExhibitions(locale),
+      ])
+    } catch { /* graceful fallback */ }
   }
 
   return (
-    <div>
-      {siteMeta && <Bio siteMeta={siteMeta} />}
+    <>
+      <AboutHero />
+      <AboutBio aboutPage={aboutPage} />
       <CVAccordion exhibitions={exhibitions} />
-    </div>
+    </>
   )
 }

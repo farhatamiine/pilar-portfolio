@@ -5,7 +5,19 @@
     "contact": "Contacto"
   },
   "home": {
-    "tagline": "Artista multidisciplinaria · París"
+    "tagline": "Artista multidisciplinaria · París",
+    "label": "Artista multidisciplinaria · París",
+    "disciplines": "Fotografía híbrida · Arte textil · Instalación",
+    "exploreWork": "Explorar obra",
+    "aboutMe": "Sobre mí",
+    "scroll": "Scroll",
+    "obraLabel": "Obra"
+  },
+  "hero": {
+    "label": "Artista multidisciplinaria · París",
+    "disciplines": "Fotografía híbrida · Arte textil · Instalación",
+    "exploreWork": "Explorar obra",
+    "aboutMe": "Sobre mí"
   },
   "project": {
     "next": "Proyecto siguiente",
@@ -17,15 +29,49 @@
     "solo": "Exposiciones individuales",
     "collective": "Exposiciones colectivas",
     "residency": "Residencias",
-    "publication": "Publicaciones y conferencias"
+    "publication": "Publicaciones y conferencias",
+    "profileLabel": "Perfil",
+    "bioLabel": "Biografía",
+    "practiceLabel": "Práctica",
+    "cvLabel": "Currículum",
+    "trajectory": "Trayectoria",
+    "availabilityText": "Disponible para encargos, residencias y proyectos colaborativos",
+    "bioHeading": "Pilar Olivero",
+    "bioSubtitle": "Artista multidisciplinaria · Arte-terapeuta",
+    "layersTitle": "Un trabajo hecho de capas y tiempo",
+    "para1": "Pilar Olivero (Buenos Aires, 1988) es artista y arte-terapeuta. Su práctica transita entre la instalación textil, la fotografía alternativa y la performance duracional. Vive y trabaja en París.",
+    "para2": "Formada en la Universidad Nacional de las Artes de Buenos Aires y en la École Nationale Supérieure des Beaux-Arts de París, su obra se ancla en la intersección entre cuerpo, memoria y archivo.",
+    "stat1Label": "Proyectos",
+    "stat2Label": "Países",
+    "stat3Label": "Años de práctica",
+    "readBio": "Leer la biografía",
+    "practiceTitle": "Cuatro formas de tocar el mundo"
   },
   "contact": {
+    "label": "Contacto",
+    "heading": "Hablemos.",
+    "description": "Disponible para encargos, residencias, proyectos colaborativos y prensa. Respondo personalmente todos los mensajes.",
+    "emailLabel": "Email",
+    "instagramLabel": "Instagram",
+    "locationLabel": "Ubicación",
+    "locationValue": "París, Francia",
+    "formLabel": "Mensaje",
     "intro": "Disponible para colaboraciones, residencias y exposiciones.",
     "name": "Nombre",
     "email": "Correo electrónico",
     "message": "Mensaje",
-    "submit": "Enviar",
-    "success": "Mensaje enviado ✓",
-    "error": "Ocurrió un error. Por favor intenta de nuevo o escribe directamente a"
+    "submit": "Enviar mensaje",
+    "success": "Mensaje enviado. Me pondré en contacto pronto.",
+    "successHeading": "Gracias.",
+    "error": "Ocurrió un error. Por favor escribe directamente a"
+  },
+  "collaborate": {
+    "label": "Contacto",
+    "heading": "¿Trabajamos juntos?",
+    "description": "Disponible para encargos, residencias, exposiciones y proyectos colaborativos. Basada en París, disponible internacionalmente.",
+    "cta": "Escribir"
+  },
+  "ticker": {
+    "exhibitions": "Exposiciones y Residencias"
   }
 }
