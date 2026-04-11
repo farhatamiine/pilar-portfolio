@@ -1,4 +1,4 @@
-import { getAllProjects } from '@/lib/hygraph'
+import { getAllProjects } from '@/lib/strapi'
 import { MOCK_PROJECTS } from '@/lib/mock-data'
 import { Hero } from '@/components/home/Hero'
 import { ProjectList } from '@/components/home/ProjectList'

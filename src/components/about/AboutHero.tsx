@@ -2,10 +2,12 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
 export function AboutHero() {
+  const t = useTranslations('about')
   return (
     <section className="relative bg-ink min-h-screen flex items-end overflow-hidden">
 
@@ -31,7 +33,7 @@ export function AboutHero() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Perfil
+            {t('profileLabel')}
           </motion.p>
 
           <motion.h1

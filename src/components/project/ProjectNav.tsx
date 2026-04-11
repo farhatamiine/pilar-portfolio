@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import type { ProjectSummary } from '@/lib/hygraph'
+import type { ProjectSummary } from '@/lib/strapi'
 
 interface ProjectNavProps { prev: ProjectSummary | null; next: ProjectSummary | null; locale: string }
 

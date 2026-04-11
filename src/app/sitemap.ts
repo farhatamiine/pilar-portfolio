@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { getAllProjects } from '@/lib/hygraph'
+import { getAllProjects } from '@/lib/strapi'
 import { locales } from '../../i18n'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

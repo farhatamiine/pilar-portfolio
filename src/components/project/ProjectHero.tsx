@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import type { HygraphImage } from '@/lib/hygraph'
+import type { HygraphImage } from '@/lib/strapi'
 
 interface ProjectHeroProps {
   coverImage: HygraphImage | null

@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { getAllProjects, getProjectBySlug } from '@/lib/hygraph'
+import { getAllProjects, getProjectBySlug } from '@/lib/strapi'
 import { locales, type Locale } from '../../../../../i18n'
 import { ProjectHero } from '@/components/project/ProjectHero'
 import { ProjectStatement } from '@/components/project/ProjectStatement'

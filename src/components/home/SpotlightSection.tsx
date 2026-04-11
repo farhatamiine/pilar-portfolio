@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { useLocale } from 'next-intl'
-import type { ProjectSummary } from '@/lib/hygraph'
+import type { ProjectSummary } from '@/lib/strapi'
 
 interface SpotlightSectionProps { projects: ProjectSummary[] }
 

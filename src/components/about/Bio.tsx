@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { RichText } from '@/components/ui/RichText'
-import type { AboutPage } from '@/lib/hygraph'
+import type { AboutPage } from '@/lib/strapi'
 
 interface BioProps { aboutPage: AboutPage }
 

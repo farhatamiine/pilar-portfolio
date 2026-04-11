@@ -1,8 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { RichText } from '@/components/ui/RichText'
-import type { AboutPage } from '@/lib/hygraph'
+import type { AboutPage } from '@/lib/strapi'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -31,6 +32,7 @@ const disciplines = [
 interface AboutBioProps { aboutPage: AboutPage | null }
 
 export function AboutBio({ aboutPage }: AboutBioProps) {
+  const t = useTranslations('about')
   const data = aboutPage ?? MOCK_BIO
 
   return (
@@ -45,7 +47,7 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
             className="font-mono text-xs tracking-[0.4em] uppercase text-ink/50 mb-6"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
           >
-            Biografía
+            {t('bioLabel')}
           </motion.p>
           <motion.h2
             className="font-cormorant italic text-[clamp(2rem,3.5vw,3.2rem)] text-ink leading-[1.05]"
@@ -84,7 +86,7 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
         >
           {data.biography ? (
             <RichText
-              html={typeof data.biography === 'string' ? data.biography : (data.biography as any).html}
+              html={typeof data.biography === 'string' ? data.biography : data.biography.html}
               className="font-garamond text-[1.1rem] leading-[1.85] text-body-text/80 [&_p]:mb-6 [&_em]:italic [&_strong]:font-semibold"
             />
           ) : null}
@@ -92,7 +94,7 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
       </div>
 
       {/* ── Philosophy pull-quote ───────────────────────── */}
-      {(data as any).philosophy && (
+      {data.philosophy && (
         <div className="bg-ink px-8 md:px-20 py-20 md:py-28">
           <motion.div
             className="max-w-3xl mx-auto"
@@ -100,10 +102,9 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
             viewport={{ once: true }} transition={{ duration: 0.8, ease }}
           >
             <span className="font-cormorant italic text-accent text-6xl leading-none select-none">"</span>
-            <RichText
-              html={typeof (data as any).philosophy === 'string' ? (data as any).philosophy : ((data as any).philosophy as any)?.html ?? ''}
-              className="font-cormorant italic text-[clamp(1.4rem,2.5vw,2rem)] text-paper/80 leading-[1.5] [&_p]:mb-4 -mt-6"
-            />
+            <p className="font-cormorant italic text-[clamp(1.4rem,2.5vw,2rem)] text-paper/80 leading-[1.5] -mt-6">
+              {data.philosophy}
+            </p>
           </motion.div>
         </div>
       )}

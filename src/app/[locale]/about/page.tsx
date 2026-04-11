@@ -1,4 +1,4 @@
-import { getAboutPage, getExhibitions } from '@/lib/hygraph'
+import { getAboutPage, getExhibitions } from '@/lib/strapi'
 import { AboutHero } from '@/components/about/AboutHero'
 import { AboutBio } from '@/components/about/AboutBio'
 import { CVAccordion } from '@/components/about/CVAccordion'
@@ -24,7 +24,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
         getAboutPage(locale),
         getExhibitions(locale),
       ])
-    } catch { /* graceful fallback */ }
+    } catch (err) { console.error('[About] Hygraph fetch failed:', err) }
   }
 
   return (

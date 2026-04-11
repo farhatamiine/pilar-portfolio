@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLocale } from 'next-intl'
-import type { ProjectSummary } from '@/lib/hygraph'
+import type { ProjectSummary } from '@/lib/strapi'
 
 interface ProjectListProps { projects: ProjectSummary[] }
 

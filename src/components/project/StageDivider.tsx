@@ -1,5 +1,5 @@
 import { RichText } from '@/components/ui/RichText'
-import type { RichTextContent } from '@/lib/hygraph'
+import type { RichTextContent } from '@/lib/strapi'
 
 interface StageDividerProps { stageTwoContent: RichTextContent | null }
 

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useLocale, useTranslations } from 'next-intl'
-import type { ProjectSummary } from '@/lib/hygraph'
+import type { ProjectSummary } from '@/lib/strapi'
 
 const ease = [0.16, 1, 0.3, 1] as const
 

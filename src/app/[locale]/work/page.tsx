@@ -1,4 +1,4 @@
-import { getAllProjects } from '@/lib/hygraph'
+import { getAllProjects } from '@/lib/strapi'
 import { MOCK_PROJECTS } from '@/lib/mock-data'
 import { WorkArchive } from '@/components/work/WorkArchive'
 import type { Metadata } from 'next'

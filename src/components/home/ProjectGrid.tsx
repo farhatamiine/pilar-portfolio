@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import type { ProjectSummary } from '@/lib/hygraph'
+import type { ProjectSummary } from '@/lib/strapi'
 
 interface ProjectGridProps { projects: ProjectSummary[]; locale: string }
 
