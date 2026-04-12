@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
@@ -110,23 +110,25 @@ export function DisciplinesSection() {
                             </motion.span>
                         </div>
 
-                        {/* Expanded description + image */}
-                        <AnimatePresence>
-                            {active === id && (
-                                <motion.div
-                                    className="relative z-10 flex gap-10 px-8 md:px-20 pb-10 overflow-hidden"
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: 'auto', opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                                >
+                        {/* Expanded description + image — grid-template-rows avoids height:auto jank */}
+                        <motion.div
+                            className="relative z-10"
+                            style={{ display: 'grid' }}
+                            animate={{
+                                gridTemplateRows: active === id ? '1fr' : '0fr',
+                                opacity: active === id ? 1 : 0,
+                            }}
+                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            <div style={{ overflow: 'hidden' }}>
+                                <div className="flex gap-10 px-8 md:px-20 pb-10">
                                     <p className="font-garamond text-paper/70 text-body leading-body max-w-xl flex-1">{t(`${id}.description`)}</p>
                                     <div className="hidden lg:block w-32 h-40 relative shrink-0 overflow-hidden">
                                         <Image src={disciplineImages[id]} alt={t(`${id}.title`)} fill className="object-cover" sizes="128px" />
                                     </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                                </div>
+                            </div>
+                        </motion.div>
                     </motion.div>
                 ))}
             </div>

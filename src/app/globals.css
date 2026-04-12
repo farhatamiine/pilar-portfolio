@@ -38,6 +38,57 @@
   .leading-display { line-height: 0.92; }
   .leading-head    { line-height: 1.1; }
   .leading-body    { line-height: 1.8; }
+
+  /* ─── Rich text prose — applied to dangerouslySetInnerHTML content ── */
+  .prose-rich {
+    & p           { margin-bottom: 1.5rem; line-height: 1.8; }
+    & p:last-child { margin-bottom: 0; }
+
+    & h2 { font-size: clamp(1.35rem, 2.5vw, 1.75rem); line-height: 1.15; margin-top: 2.5rem; margin-bottom: 0.875rem; font-weight: 500; }
+    & h3 { font-size: clamp(1.125rem, 2vw, 1.35rem);  line-height: 1.2;  margin-top: 2rem;   margin-bottom: 0.75rem;  font-weight: 500; }
+    & h4 { font-size: 1.0625rem; line-height: 1.4; margin-top: 1.5rem; margin-bottom: 0.5rem; font-weight: 600; letter-spacing: 0.05em; }
+
+    & ul { list-style: none; margin-bottom: 1.5rem; padding-left: 0; }
+    & ul > li { padding-left: 1.25rem; position: relative; margin-bottom: 0.4rem; }
+    & ul > li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+
+    & ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+    & ol > li { margin-bottom: 0.4rem; }
+
+    & blockquote {
+      margin: 2rem 0;
+      padding: 1.25rem 1.5rem;
+      font-style: italic;
+      opacity: 0.75;
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+
+    & strong { font-weight: 600; }
+    & em     { font-style: italic; }
+
+    & a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: color-mix(in oklch, var(--accent) 50%, transparent);
+      transition: text-decoration-color 0.2s;
+    }
+    & a:hover { text-decoration-color: var(--accent); }
+
+    & code {
+      font-family: var(--font-dm-mono), monospace;
+      font-size: 0.875em;
+      background: color-mix(in oklch, var(--grain) 60%, transparent);
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+
+    & hr {
+      border: none;
+      border-top: 1px solid color-mix(in oklch, var(--accent) 30%, transparent);
+      margin: 2.5rem 0;
+    }
+  }
 }
 
 html {
@@ -54,4 +105,13 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

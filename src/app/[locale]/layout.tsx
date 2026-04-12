@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { NoiseOverlay } from '@/components/ui/NoiseOverlay'
+import { CursorFollower } from '@/components/ui/CursorFollower'
 import { cormorant, ebGaramond, dmMono } from '@/lib/fonts'
 import { locales, type Locale } from '../../../i18n'
 
@@ -39,6 +40,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     <html lang={locale} suppressHydrationWarning>
       <body className={`${cormorant.variable} ${ebGaramond.variable} ${dmMono.variable} antialiased`}>
         <NoiseOverlay />
+        <CursorFollower />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Nav locale={locale} />
           <main>{children}</main>

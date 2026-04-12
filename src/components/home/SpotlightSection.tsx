@@ -67,7 +67,7 @@ function SpotlightCard({
                 src={project.featuredImage.url}
                 alt={project.title}
                 fill
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
             </motion.div>

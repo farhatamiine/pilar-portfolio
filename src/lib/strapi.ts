@@ -2,6 +2,12 @@
 // Drop-in replacement for hygraph.ts. All exported types and function
 // signatures are identical so no page/component files need to change.
 
+import { marked } from 'marked'
+
+// Configure marked: no GFM tables/task lists (artist CMS doesn't use them),
+// but keep line break handling natural.
+marked.setOptions({ gfm: true, breaks: false })
+
 // ─── Internal fetch wrapper ───────────────────────────────────────────────────
 
 async function strapi<T>(path: string): Promise<T> {
@@ -132,7 +138,7 @@ function mapRichText(value: unknown): RichTextContent | null {
   if (!value) return null
   // Strapi `richtext` field returns a plain string (markdown/html from WYSIWYG).
   // Strapi `blocks` field returns a structured array.
-  if (typeof value === 'string') return { html: value }
+  if (typeof value === 'string') return { html: marked(value) as string }
   if (Array.isArray(value)) {
     const arr = value as StrapiBlock[]
     return { raw: arr, html: blocksToHtml(arr) }

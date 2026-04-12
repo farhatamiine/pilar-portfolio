@@ -1,11 +1,17 @@
 import { notFound } from 'next/navigation'
+import { cache } from 'react'
 import type { Metadata } from 'next'
 import { getAllProjects, getProjectBySlug } from '@/lib/strapi'
 import { locales, type Locale } from '../../../../../i18n'
+
+// Deduplicate: generateMetadata and the page component both need the project.
+// React.cache memoises the result within a single request so Strapi is only hit once.
+const getCachedProject = cache(getProjectBySlug)
 import { ProjectHero } from '@/components/project/ProjectHero'
 import { ProjectStatement } from '@/components/project/ProjectStatement'
 import { Gallery } from '@/components/project/Gallery'
 import { ProjectNav } from '@/components/project/ProjectNav'
+import { ReadingProgress } from '@/components/project/ReadingProgress'
 
 interface ProjectPageProps {
   params: Promise<{ locale: string; slug: string }>
@@ -31,7 +37,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { locale, slug } = await params
   try {
-    const project = await getProjectBySlug(slug, locale)
+    const project = await getCachedProject(slug, locale)
     if (!project) return { title: 'Pilar Olivero' }
     return {
       title: project.title,
@@ -50,24 +56,29 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { locale, slug } = await params
   if (!locales.includes(locale as Locale)) notFound()
 
+  // Parallelise — project detail and sibling list are independent requests
   let project
+  let allProjects
   try {
-    project = await getProjectBySlug(slug, locale)
+    ;[project, allProjects] = await Promise.all([
+      getCachedProject(slug, locale),
+      getAllProjects(locale),
+    ])
   } catch {
     notFound()
   }
   if (!project) notFound()
 
-  const allProjects = await getAllProjects(locale)
   const idx = allProjects.findIndex((p) => p.slug === slug)
   const prev = idx > 0 ? allProjects[idx - 1] : null
   const next = idx < allProjects.length - 1 ? allProjects[idx + 1] : null
 
   return (
     <article>
+      <ReadingProgress />
       <ProjectHero coverImage={project.coverImage} featuredImage={project.featuredImage} title={project.title} />
       <div className="px-6 md:px-8 max-w-[680px] mx-auto mt-10">
-        <h1 className="font-cormorant italic text-headline text-ink leading-display">{project.title}</h1>
+        <h1 className="font-cormorant italic text-title text-ink leading-head">{project.title}</h1>
         <p className="font-mono text-sm text-muted mt-2">{project.year}{project.subtitle ? ` · ${project.subtitle}` : ''}</p>
       </div>
       <ProjectStatement description={project.description} />

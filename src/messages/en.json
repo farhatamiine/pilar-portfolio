@@ -27,12 +27,14 @@
     "label": "Multidisciplinary artist · Paris",
     "disciplines": "Hybrid photography · Textile art · Installation",
     "exploreWork": "Explore work",
-    "aboutMe": "About me"
+    "aboutMe": "About me",
+    "scroll": "Scroll"
   },
   "project": {
     "next": "Next project",
     "previous": "Previous project",
-    "back": "Back to work"
+    "back": "Back to work",
+    "galleryImage": "{title} — image {index} of {total}"
   },
   "about": {
     "cvTitle": "CV",
@@ -96,6 +98,9 @@
   },
   "ticker": {
     "exhibitions": "Exhibitions & Residencies"
+  },
+  "footer": {
+    "location": "Buenos Aires · Paris"
   },
   "statement": {
     "label": "Manifesto",

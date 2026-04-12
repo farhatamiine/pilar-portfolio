@@ -86,7 +86,7 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
           {data.biography ? (
             <RichText
               html={typeof data.biography === 'string' ? data.biography : data.biography.html}
-              className="font-garamond text-body leading-body text-body-text/80 [&_p]:mb-6 [&_em]:italic [&_strong]:font-semibold"
+              className="text-body leading-body text-body-text/80"
             />
           ) : null}
         </motion.div>

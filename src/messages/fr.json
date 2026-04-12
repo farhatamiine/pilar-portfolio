@@ -27,12 +27,14 @@
     "label": "Artiste multidisciplinaire · Paris",
     "disciplines": "Photographie hybride · Art textile · Installation",
     "exploreWork": "Explorer les travaux",
-    "aboutMe": "À propos"
+    "aboutMe": "À propos",
+    "scroll": "Défiler"
   },
   "project": {
     "next": "Projet suivant",
     "previous": "Projet précédent",
-    "back": "Retour aux travaux"
+    "back": "Retour aux travaux",
+    "galleryImage": "{title} — image {index} sur {total}"
   },
   "about": {
     "cvTitle": "Parcours",
@@ -96,6 +98,9 @@
   },
   "ticker": {
     "exhibitions": "Expositions & Résidences"
+  },
+  "footer": {
+    "location": "Buenos Aires · Paris"
   },
   "statement": {
     "label": "Manifeste",

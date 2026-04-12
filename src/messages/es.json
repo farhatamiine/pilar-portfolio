@@ -27,12 +27,14 @@
     "label": "Artista multidisciplinaria · París",
     "disciplines": "Fotografía híbrida · Arte textil · Instalación",
     "exploreWork": "Explorar obra",
-    "aboutMe": "Sobre mí"
+    "aboutMe": "Sobre mí",
+    "scroll": "Scroll"
   },
   "project": {
     "next": "Proyecto siguiente",
     "previous": "Proyecto anterior",
-    "back": "Volver a obras"
+    "back": "Volver a obras",
+    "galleryImage": "{title} — imagen {index} de {total}"
   },
   "about": {
     "cvTitle": "Trayectoria",
@@ -96,6 +98,9 @@
   },
   "ticker": {
     "exhibitions": "Exposiciones y Residencias"
+  },
+  "footer": {
+    "location": "Buenos Aires · París"
   },
   "statement": {
     "label": "Manifiesto",

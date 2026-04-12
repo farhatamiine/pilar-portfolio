@@ -3,14 +3,35 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import { Magnetic } from '@/components/ui/Magnetic'
 
 const ease = [0.16, 1, 0.3, 1] as const
 type Status = 'idle' | 'loading' | 'success' | 'error'
+
+/** Wraps a field with a pen-stroke underline that draws left→right on focus */
+function FormField({ children, focused }: { children: React.ReactNode; focused: boolean }) {
+  return (
+    <div className="relative">
+      {children}
+      {/* Base underline */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-grain" />
+      {/* Accent underline draws in on focus */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-px bg-accent"
+        initial={false}
+        animate={{ scaleX: focused ? 1 : 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        style={{ originX: 0 }}
+      />
+    </div>
+  )
+}
 
 export default function ContactPage() {
   const t = useTranslations('contact')
   const [status, setStatus] = useState<Status>('idle')
   const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [focused, setFocused] = useState<'name' | 'email' | 'message' | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -105,15 +126,19 @@ export default function ContactPage() {
                 <label htmlFor="contact-name" className="block font-mono text-label tracking-meta uppercase text-ink/60">
                   {t('name')} <span className="text-accent">*</span>
                 </label>
-                <input
-                  id="contact-name"
-                  type="text"
-                  required
-                  value={form.name}
-                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  className="w-full bg-transparent border-b-2 border-grain focus:border-ink outline-none py-3 font-garamond text-xl text-ink placeholder:text-ink/20 transition-colors"
-                  placeholder="—"
-                />
+                <FormField focused={focused === 'name'}>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    required
+                    value={form.name}
+                    onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                    onFocus={() => setFocused('name')}
+                    onBlur={() => setFocused(null)}
+                    className="w-full bg-transparent border-b border-transparent outline-none pb-3 pt-1 font-garamond text-xl text-ink placeholder:text-ink/20"
+                    placeholder="—"
+                  />
+                </FormField>
               </div>
 
               {/* Email */}
@@ -121,15 +146,19 @@ export default function ContactPage() {
                 <label htmlFor="contact-email" className="block font-mono text-label tracking-meta uppercase text-ink/60">
                   {t('email')} <span className="text-accent">*</span>
                 </label>
-                <input
-                  id="contact-email"
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                  className="w-full bg-transparent border-b-2 border-grain focus:border-ink outline-none py-3 font-garamond text-xl text-ink placeholder:text-ink/20 transition-colors"
-                  placeholder="—"
-                />
+                <FormField focused={focused === 'email'}>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                    onFocus={() => setFocused('email')}
+                    onBlur={() => setFocused(null)}
+                    className="w-full bg-transparent border-b border-transparent outline-none pb-3 pt-1 font-garamond text-xl text-ink placeholder:text-ink/20"
+                    placeholder="—"
+                  />
+                </FormField>
               </div>
 
               {/* Message */}
@@ -137,15 +166,19 @@ export default function ContactPage() {
                 <label htmlFor="contact-message" className="block font-mono text-label tracking-meta uppercase text-ink/60">
                   {t('message')} <span className="text-accent">*</span>
                 </label>
-                <textarea
-                  id="contact-message"
-                  required
-                  rows={5}
-                  value={form.message}
-                  onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                  className="w-full bg-transparent border-b-2 border-grain focus:border-ink outline-none py-3 font-garamond text-xl text-ink placeholder:text-ink/20 transition-colors resize-none"
-                  placeholder="—"
-                />
+                <FormField focused={focused === 'message'}>
+                  <textarea
+                    id="contact-message"
+                    required
+                    rows={5}
+                    value={form.message}
+                    onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                    onFocus={() => setFocused('message')}
+                    onBlur={() => setFocused(null)}
+                    className="w-full bg-transparent border-b border-transparent outline-none pb-3 pt-1 font-garamond text-xl text-ink placeholder:text-ink/20 resize-none"
+                    placeholder="—"
+                  />
+                </FormField>
               </div>
 
               {status === 'error' && (
@@ -157,14 +190,16 @@ export default function ContactPage() {
                 </p>
               )}
 
-              <button
-                type="submit"
-                disabled={status === 'loading'}
-                className="group inline-flex items-center gap-4 font-mono text-label tracking-label uppercase bg-ink text-paper px-10 py-4 hover:bg-accent transition-colors disabled:opacity-50"
-              >
-                {status === 'loading' ? '…' : t('submit')}
-                <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-              </button>
+              <Magnetic strength={0.28}>
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="group inline-flex items-center gap-4 font-mono text-label tracking-label uppercase bg-ink text-paper px-10 py-4 hover:bg-accent transition-colors disabled:opacity-50 active:scale-[0.98]"
+                >
+                  {status === 'loading' ? '…' : t('submit')}
+                  <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                </button>
+              </Magnetic>
             </form>
           )}
         </motion.div>

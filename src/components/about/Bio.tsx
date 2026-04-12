@@ -25,7 +25,7 @@ export function Bio({ aboutPage }: BioProps) {
             <p className="font-mono text-sm text-muted mb-6">{aboutPage.subtitle}</p>
           )}
           <RichText html={aboutPage.biography?.html ?? null}
-            className="text-lg leading-loose text-body-text [&_p]:mb-4 [&_em]:italic" />
+            className="text-lg leading-loose text-body-text" />
           {aboutPage.availability && (
             <p className="mt-8 font-mono text-xs text-muted border-t border-dividers pt-4">
               {aboutPage.availability}

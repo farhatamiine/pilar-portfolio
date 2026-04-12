@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import type { Exhibition } from '@/lib/strapi'
 
@@ -92,25 +92,26 @@ export function CVAccordion({ exhibitions }: CVAccordionProps) {
                 </motion.span>
               </button>
 
-              {/* Entries */}
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden"
-                  >
-                    <ul className="pb-10">
-                      {entries.map((entry, i) => (
-                        <motion.li
-                          key={entry.id}
-                          className="flex items-start justify-between gap-8 py-5 border-b border-grain/40 last:border-0"
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: i * 0.05, duration: 0.35 }}
-                        >
+              {/* Entries — grid-template-rows avoids height:auto jank */}
+              <motion.div
+                initial={false}
+                animate={{
+                  gridTemplateRows: isOpen ? '1fr' : '0fr',
+                  opacity: isOpen ? 1 : 0,
+                }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                style={{ display: 'grid' }}
+              >
+                <div style={{ overflow: 'hidden' }}>
+                  <ul className="pb-10">
+                    {entries.map((entry, i) => (
+                      <motion.li
+                        key={entry.id}
+                        className="flex items-start justify-between gap-8 py-5 border-b border-grain/40 last:border-0"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 8 }}
+                        transition={{ delay: isOpen ? i * 0.05 : 0, duration: 0.35 }}
+                      >
                           <div>
                             <h3 className="font-cormorant text-subhead leading-snug text-ink">
                               {entry.title}
@@ -126,10 +127,9 @@ export function CVAccordion({ exhibitions }: CVAccordionProps) {
                           </span>
                         </motion.li>
                       ))}
-                    </ul>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  </ul>
+                </div>
+              </motion.div>
             </div>
           )
         })}
