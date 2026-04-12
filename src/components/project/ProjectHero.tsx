@@ -11,7 +11,7 @@ export function ProjectHero({ coverImage, featuredImage, title }: ProjectHeroPro
   const image = coverImage ?? featuredImage
   if (!image) {
     return (
-      <div className="w-full h-[60vh] bg-grain flex items-center justify-center">
+      <div className="w-full h-[60dvh] bg-grain flex items-center justify-center">
         <span className="font-cormorant italic text-3xl text-muted">{title}</span>
       </div>
     )

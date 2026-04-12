@@ -44,7 +44,7 @@ export function ExhibitionsTicker() {
         >
           {tickerItems.map((item, i) => (
             <span key={i} className="flex items-center gap-10 shrink-0">
-              <span className="font-mono text-xs tracking-[0.15em] uppercase text-paper/70">
+              <span className="font-mono text-label tracking-meta uppercase text-paper/70">
                 {item}
               </span>
               <span className="text-accent/50 font-mono text-xs select-none" aria-hidden>◆</span>

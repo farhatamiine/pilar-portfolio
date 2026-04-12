@@ -9,7 +9,7 @@ const ease = [0.16, 1, 0.3, 1] as const
 export function AboutHero() {
   const t = useTranslations('about')
   return (
-    <section className="relative bg-ink min-h-screen flex items-end overflow-hidden">
+    <section className="relative bg-ink min-h-dvh flex items-end overflow-hidden">
 
       {/* Portrait image — full bleed */}
       <div className="absolute inset-0">
@@ -29,7 +29,7 @@ export function AboutHero() {
       <div className="relative z-10 w-full px-8 md:px-20 pb-20 md:pb-28">
         <div className="max-w-3xl">
           <motion.p
-            className="font-mono text-xs tracking-[0.4em] uppercase text-accent mb-6"
+            className="font-mono text-label tracking-label uppercase text-accent mb-6"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
@@ -37,7 +37,7 @@ export function AboutHero() {
           </motion.p>
 
           <motion.h1
-            className="font-cormorant italic text-[clamp(3.5rem,8vw,7rem)] text-paper leading-[0.92] mb-6"
+            className="font-cormorant italic text-display text-paper leading-display mb-6"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.9, ease }}
           >

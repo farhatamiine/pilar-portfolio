@@ -18,13 +18,13 @@ export function ProjectList({ projects }: ProjectListProps) {
   const active = projects[activeIndex]
 
   return (
-    <section className="hidden lg:flex min-h-screen bg-paper">
+    <section className="hidden lg:flex min-h-dvh bg-paper">
 
       {/* ── Left: numbered project list ──────────────────────── */}
       <div className="w-[42vw] flex flex-col justify-center px-14 py-20">
 
         <motion.p
-          className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted mb-10"
+          className="font-mono text-label tracking-label uppercase text-muted mb-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -47,18 +47,18 @@ export function ProjectList({ projects }: ProjectListProps) {
                 className="group flex items-baseline gap-5 py-4 border-b border-grain hover:border-accent/40 transition-colors"
                 onMouseEnter={() => setActiveIndex(i)}
               >
-                <span className="font-mono text-[11px] text-muted/60 w-6 shrink-0 tabular-nums">
+                <span className="font-mono text-label text-muted/60 w-6 shrink-0 tabular-nums">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <span className="flex-1 min-w-0">
                   <motion.span
-                    className="block font-cormorant text-[1.6rem] leading-snug text-ink"
+                    className="block font-cormorant text-subhead leading-snug text-ink"
                     animate={{ fontStyle: activeIndex === i ? 'italic' : 'normal' }}
                     transition={{ duration: 0.2 }}
                   >
                     {project.title}
                   </motion.span>
-                  <span className="font-mono text-[10px] text-muted tracking-wide">
+                  <span className="font-mono text-label text-muted tracking-meta">
                     {project.year}{project.subtitle ? ` · ${project.subtitle}` : ''}
                   </span>
                 </span>
@@ -78,7 +78,7 @@ export function ProjectList({ projects }: ProjectListProps) {
 
       {/* ── Right: sticky image panel ─────────────────────────── */}
       <div
-        className="w-[58vw] sticky top-0 h-screen overflow-hidden bg-grain"
+        className="w-[58vw] sticky top-0 h-dvh overflow-hidden bg-grain"
         aria-hidden="true"
       >
         <AnimatePresence mode="wait">
@@ -103,7 +103,7 @@ export function ProjectList({ projects }: ProjectListProps) {
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink/30 to-transparent" />
               {/* Active project label overlay */}
               <div className="absolute bottom-8 left-8">
-                <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-paper/60">
+                <p className="font-mono text-label tracking-meta uppercase text-paper/60">
                   {String(activeIndex + 1).padStart(2, '0')} — {active.year}
                 </p>
                 <p className="font-cormorant italic text-2xl text-paper/90 mt-1">
@@ -121,7 +121,7 @@ export function ProjectList({ projects }: ProjectListProps) {
               transition={{ duration: 0.3 }}
             >
               <div>
-                <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-muted">
+                <p className="font-mono text-label tracking-meta uppercase text-muted">
                   {String(activeIndex + 1).padStart(2, '0')} — {active?.year}
                 </p>
                 <p className="font-cormorant italic text-2xl text-ink/40 mt-1">

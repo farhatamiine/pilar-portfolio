@@ -42,7 +42,7 @@ export function WorkArchive({ projects }: WorkArchiveProps) {
     : projects.filter(p => getCategory(p) === filter)
 
   return (
-    <div className="min-h-screen bg-paper">
+    <div className="min-h-dvh bg-paper">
 
       {/* ── Header ─────────────────────────────────────── */}
       <div className="px-8 md:px-20 pt-36 pb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">

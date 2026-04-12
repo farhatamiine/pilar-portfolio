@@ -47,7 +47,7 @@ export function Nav({ locale }: NavProps) {
         {/* Logo */}
         <Link
           href={`/${locale}`}
-          className={`font-mono text-xs tracking-[0.2em] uppercase transition-colors hover:text-accent ${
+          className={`font-mono text-label tracking-meta uppercase transition-colors hover:text-accent ${
             solid ? 'text-ink' : 'text-paper'
           }`}
         >
@@ -63,7 +63,7 @@ export function Nav({ locale }: NavProps) {
                 <Link
                   key={key}
                   href={`/${locale}/${key}`}
-                  className={`relative font-mono text-xs tracking-[0.2em] uppercase transition-colors hover:text-accent pb-1 ${
+                  className={`relative font-mono text-label tracking-meta uppercase transition-colors hover:text-accent pb-1 ${
                     isActive
                       ? 'text-accent'
                       : solid ? 'text-ink/70' : 'text-paper/70'
@@ -88,7 +88,7 @@ export function Nav({ locale }: NavProps) {
               <span key={loc} className="flex items-center gap-2">
                 <Link
                   href={`/${loc}${restPath}`}
-                  className={`font-mono text-[11px] tracking-[0.2em] uppercase transition-colors hover:text-accent ${
+                  className={`font-mono text-label tracking-meta uppercase transition-colors hover:text-accent ${
                     loc === locale ? 'text-accent' : solid ? 'text-ink/50' : 'text-paper/50'
                   }`}
                 >
@@ -108,7 +108,7 @@ export function Nav({ locale }: NavProps) {
             <Link
               key={loc}
               href={`/${loc}${restPath}`}
-              className={`font-mono text-[11px] tracking-[0.2em] uppercase transition-colors ${
+              className={`font-mono text-label tracking-meta uppercase transition-colors ${
                 loc === locale ? 'text-accent' : solid ? 'text-ink/60' : 'text-paper/60'
               }`}
             >

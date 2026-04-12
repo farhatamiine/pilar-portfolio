@@ -18,7 +18,7 @@ export function LocaleSwitcher() {
         <span key={locale} className="flex items-center gap-3">
           <Link
             href={`/${locale}${pathname === '/' ? '' : pathname}`}
-            className={`font-mono text-[10px] tracking-[0.25em] uppercase transition-colors hover:text-accent ${
+            className={`font-mono text-label tracking-meta uppercase transition-colors hover:text-accent ${
               locale === currentLocale ? 'text-accent' : 'text-paper/40'
             }`}
             aria-current={locale === currentLocale ? 'true' : undefined}

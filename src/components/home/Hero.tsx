@@ -13,7 +13,7 @@ export function Hero({ featuredProject }: { featuredProject: ProjectSummary | nu
   const t = useTranslations('hero')
 
   return (
-    <section className="relative flex min-h-screen bg-ink overflow-hidden">
+    <section className="relative flex min-h-dvh bg-ink overflow-hidden">
 
       {/* ── Left panel ─────────────────────────────────────── */}
       <div className="relative z-10 flex flex-col justify-between w-full lg:w-[45vw] px-10 lg:px-16 pt-36 pb-14">
@@ -24,7 +24,7 @@ export function Hero({ featuredProject }: { featuredProject: ProjectSummary | nu
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease, delay: 0.1 }}
         >
-          <p className="font-mono text-xs tracking-[0.3em] uppercase text-accent">
+          <p className="font-mono text-label tracking-label uppercase text-accent">
             {t('label')}
           </p>
         </motion.div>
@@ -102,7 +102,7 @@ export function Hero({ featuredProject }: { featuredProject: ProjectSummary | nu
         animate={{ opacity: 0.5 }}
         transition={{ delay: 1.2, duration: 0.8 }}
       >
-        <span className="font-mono text-xs tracking-[0.3em] uppercase text-paper/60">Scroll</span>
+        <span className="font-mono text-label tracking-label uppercase text-paper/60">Scroll</span>
         <motion.div
           className="w-px h-8 bg-paper/30"
           animate={{ scaleY: [0, 1, 0], originY: 0 }}

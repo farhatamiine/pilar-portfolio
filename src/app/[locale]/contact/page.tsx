@@ -24,20 +24,20 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-paper grid grid-cols-1 lg:grid-cols-2">
+    <div className="min-h-dvh bg-paper grid grid-cols-1 lg:grid-cols-2">
 
       {/* ── Left: info panel (dark) ─────────────────── */}
-      <div className="bg-ink flex flex-col justify-between px-10 md:px-16 pt-36 pb-16 min-h-[50vh] lg:min-h-screen">
+      <div className="bg-ink flex flex-col justify-between px-10 md:px-16 pt-36 pb-16 min-h-[50dvh] lg:min-h-dvh">
         <div>
           <motion.p
-            className="font-mono text-xs tracking-[0.4em] uppercase text-accent mb-10"
+            className="font-mono text-label tracking-label uppercase text-accent mb-10"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}
           >
             {t('label')}
           </motion.p>
 
           <motion.h1
-            className="font-cormorant italic text-[clamp(3.5rem,6vw,6rem)] text-paper leading-[0.92] mb-10"
+            className="font-cormorant italic text-headline text-paper leading-display mb-10"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8, ease }}
           >
@@ -45,7 +45,7 @@ export default function ContactPage() {
           </motion.h1>
 
           <motion.p
-            className="font-garamond text-paper/70 text-[1.05rem] leading-[1.8] max-w-sm"
+            className="font-garamond text-paper/70 text-body leading-body max-w-sm"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ delay: 0.35, duration: 0.7 }}
           >
@@ -65,16 +65,16 @@ export default function ContactPage() {
             { label: t('locationLabel'),  value: t('locationValue'),           href: null },
           ] as const).map(({ label, value, href }) => (
             <div key={label}>
-              <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-paper/40 mb-1">{label}</p>
+              <p className="font-mono text-label tracking-meta uppercase text-paper/40 mb-1">{label}</p>
               {href ? (
                 <a href={href}
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel="noopener noreferrer"
-                  className="font-garamond text-paper/80 hover:text-accent transition-colors text-[1.05rem]">
+                  className="font-garamond text-paper/80 hover:text-accent transition-colors text-body">
                   {value}
                 </a>
               ) : (
-                <p className="font-garamond text-paper/80 text-[1.05rem]">{value}</p>
+                <p className="font-garamond text-paper/80 text-body">{value}</p>
               )}
             </div>
           ))}
@@ -98,11 +98,11 @@ export default function ContactPage() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="space-y-10">
-              <p className="font-mono text-xs tracking-[0.4em] uppercase text-ink/50">{t('formLabel')}</p>
+              <p className="font-mono text-label tracking-label uppercase text-ink/50">{t('formLabel')}</p>
 
               {/* Name */}
               <div className="space-y-2">
-                <label htmlFor="contact-name" className="block font-mono text-xs tracking-[0.25em] uppercase text-ink/60">
+                <label htmlFor="contact-name" className="block font-mono text-label tracking-meta uppercase text-ink/60">
                   {t('name')} <span className="text-accent">*</span>
                 </label>
                 <input
@@ -118,7 +118,7 @@ export default function ContactPage() {
 
               {/* Email */}
               <div className="space-y-2">
-                <label htmlFor="contact-email" className="block font-mono text-xs tracking-[0.25em] uppercase text-ink/60">
+                <label htmlFor="contact-email" className="block font-mono text-label tracking-meta uppercase text-ink/60">
                   {t('email')} <span className="text-accent">*</span>
                 </label>
                 <input
@@ -134,7 +134,7 @@ export default function ContactPage() {
 
               {/* Message */}
               <div className="space-y-2">
-                <label htmlFor="contact-message" className="block font-mono text-xs tracking-[0.25em] uppercase text-ink/60">
+                <label htmlFor="contact-message" className="block font-mono text-label tracking-meta uppercase text-ink/60">
                   {t('message')} <span className="text-accent">*</span>
                 </label>
                 <textarea
@@ -160,7 +160,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="group inline-flex items-center gap-4 font-mono text-xs tracking-[0.3em] uppercase bg-ink text-paper px-10 py-4 hover:bg-accent transition-colors disabled:opacity-50"
+                className="group inline-flex items-center gap-4 font-mono text-label tracking-label uppercase bg-ink text-paper px-10 py-4 hover:bg-accent transition-colors disabled:opacity-50"
               >
                 {status === 'loading' ? '…' : t('submit')}
                 <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>

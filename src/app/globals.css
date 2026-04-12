@@ -20,24 +20,24 @@
   --font-cormorant: var(--font-cormorant), Georgia, serif;
   --font-garamond:  var(--font-eb-garamond), Georgia, serif;
   --font-mono:      var(--font-dm-mono), monospace;
+}
 
-  /* ─── Type scale ────────────────────────────────────────────────── */
-  --text-display:  clamp(4rem, 9vw, 8rem);
-  --text-headline: clamp(3rem, 6.5vw, 6.5rem);
-  --text-title:    clamp(2.25rem, 4.5vw, 4.25rem);
-  --text-heading:  clamp(1.75rem, 3vw, 2.75rem);
-  --text-subhead:  clamp(1.35rem, 2.5vw, 1.75rem);
-  --text-body:     1.0625rem;
-  --text-label:    0.6875rem;
+/* ─── Type scale (explicit utilities — @theme silently drops --text-* / --leading-* / --tracking-* in Tailwind v4.2) ── */
+@layer utilities {
+  .text-display  { font-size: clamp(4rem,   9vw,   8rem); }
+  .text-headline { font-size: clamp(3rem,   6.5vw, 6.5rem); }
+  .text-title    { font-size: clamp(2.25rem,4.5vw, 4.25rem); }
+  .text-heading  { font-size: clamp(1.75rem,3vw,   2.75rem); }
+  .text-subhead  { font-size: clamp(1.35rem,2.5vw, 1.75rem); }
+  .text-body     { font-size: 1.0625rem; }
+  .text-label    { font-size: 0.6875rem; }
 
-  /* ─── Letter spacing ────────────────────────────────────────────── */
-  --tracking-label: 0.3em;
-  --tracking-meta:  0.15em;
+  .tracking-label { letter-spacing: 0.3em; }
+  .tracking-meta  { letter-spacing: 0.15em; }
 
-  /* ─── Line height ────────────────────────────────────────────────── */
-  --leading-display: 0.92;
-  --leading-head:    1.1;
-  --leading-body:    1.8;
+  .leading-display { line-height: 0.92; }
+  .leading-head    { line-height: 1.1; }
+  .leading-body    { line-height: 1.8; }
 }
 
 html {

@@ -20,7 +20,7 @@ export function ProjectNav({ prev, next, locale }: ProjectNavProps) {
             </div>
           )}
           <div>
-            <span className="block font-mono text-xs text-muted tracking-widest">← {t('previous')}</span>
+            <span className="block font-mono text-label text-muted tracking-label">← {t('previous')}</span>
             <span className="font-cormorant italic text-ink group-hover:text-accent transition-colors">{prev.title}</span>
           </div>
         </Link>
@@ -28,7 +28,7 @@ export function ProjectNav({ prev, next, locale }: ProjectNavProps) {
       {next ? (
         <Link href={`/${locale}/work/${next.slug}`} className="group flex items-center gap-3 text-right max-w-[45%] ml-auto">
           <div>
-            <span className="block font-mono text-xs text-muted tracking-widest">{t('next')} →</span>
+            <span className="block font-mono text-label text-muted tracking-label">{t('next')} →</span>
             <span className="font-cormorant italic text-ink group-hover:text-accent transition-colors">{next.title}</span>
           </div>
           {next.featuredImage && (

@@ -42,13 +42,13 @@ export function CVAccordion({ exhibitions }: CVAccordionProps) {
 
       {/* Section label */}
       <motion.p
-        className="font-mono text-xs tracking-[0.35em] uppercase text-ink/40 mb-3"
+        className="font-mono text-label tracking-label uppercase text-ink/40 mb-3"
         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
       >
         {t('cvLabel')}
       </motion.p>
       <motion.h2
-        className="font-cormorant italic text-[clamp(2.2rem,4vw,3.5rem)] text-ink mb-16 leading-none"
+        className="font-cormorant italic text-title text-ink mb-16 leading-head"
         initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }} transition={{ duration: 0.7 }}
       >
@@ -72,7 +72,7 @@ export function CVAccordion({ exhibitions }: CVAccordionProps) {
                 className="w-full flex items-center justify-between pt-8 pb-6 group text-left"
               >
                 <div className="flex items-center gap-5">
-                  <span className="font-mono text-xs tracking-[0.3em] uppercase text-ink/50 group-hover:text-ink transition-colors">
+                  <span className="font-mono text-label tracking-label uppercase text-ink/50 group-hover:text-ink transition-colors">
                     {label}
                   </span>
                   <motion.div
@@ -112,11 +112,11 @@ export function CVAccordion({ exhibitions }: CVAccordionProps) {
                           transition={{ delay: i * 0.05, duration: 0.35 }}
                         >
                           <div>
-                            <h3 className="font-cormorant text-[1.7rem] leading-tight text-ink">
+                            <h3 className="font-cormorant text-subhead leading-snug text-ink">
                               {entry.title}
                             </h3>
                             {entry.location && (
-                              <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-ink/40 mt-1">
+                              <p className="font-mono text-label tracking-meta uppercase text-ink/40 mt-1">
                                 {entry.location}
                               </p>
                             )}
