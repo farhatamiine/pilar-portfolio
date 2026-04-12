@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import type { ProjectSummary } from '@/lib/strapi'
 
 interface ProjectListProps { projects: ProjectSummary[] }
@@ -13,6 +13,7 @@ const ease = [0.16, 1, 0.3, 1] as const
 
 export function ProjectList({ projects }: ProjectListProps) {
   const locale = useLocale()
+  const t = useTranslations('home')
   const [activeIndex, setActiveIndex] = useState(0)
   const active = projects[activeIndex]
 
@@ -29,7 +30,7 @@ export function ProjectList({ projects }: ProjectListProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Obra
+          {t('obraLabel')}
         </motion.p>
 
         <ol>

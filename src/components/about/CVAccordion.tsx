@@ -112,7 +112,7 @@ export function CVAccordion({ exhibitions }: CVAccordionProps) {
                           transition={{ delay: i * 0.05, duration: 0.35 }}
                         >
                           <div>
-                            <h3 className="font-cormorant text-[1.7rem] leading-tight tracking-wide uppercase text-ink">
+                            <h3 className="font-cormorant text-[1.7rem] leading-tight text-ink">
                               {entry.title}
                             </h3>
                             {entry.location && (

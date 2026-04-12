@@ -10,7 +10,7 @@ interface ProjectNavProps { prev: ProjectSummary | null; next: ProjectSummary | 
 export function ProjectNav({ prev, next, locale }: ProjectNavProps) {
   const t = useTranslations('project')
   return (
-    <nav aria-label="Project navigation" className="border-t border-grain mt-16 px-4 md:px-8 py-8 flex justify-between gap-4">
+    <nav aria-label="Project navigation" className="border-t border-grain mt-16 px-6 md:px-8 py-8 flex justify-between gap-4">
       {prev ? (
         <Link href={`/${locale}/work/${prev.slug}`} className="group flex items-center gap-3 max-w-[45%]">
           {prev.featuredImage && (

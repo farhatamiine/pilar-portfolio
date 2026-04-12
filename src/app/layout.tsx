@@ -1,17 +1,7 @@
-import type { Metadata } from 'next'
-import { cormorant, ebGaramond, dmMono } from '@/lib/fonts'
 import './globals.css'
 
-export const metadata: Metadata = {
-  title: 'Pilar Olivero',
-}
-
+// Root layout is a passthrough — <html lang={locale}> is set in [locale]/layout.tsx
+// so the correct language attribute is always present for encoding and accessibility.
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html suppressHydrationWarning>
-      <body className={`${cormorant.variable} ${ebGaramond.variable} ${dmMono.variable}`}>
-        {children}
-      </body>
-    </html>
-  )
+  return children
 }

@@ -11,7 +11,17 @@
     "exploreWork": "Explorar obra",
     "aboutMe": "Sobre mí",
     "scroll": "Scroll",
-    "obraLabel": "Obra"
+    "obraLabel": "Obra",
+    "archiveLabel": "Archivo",
+    "spotlightLabel": "Obras seleccionadas",
+    "viewWork": "Ver obra",
+    "filters": {
+      "all": "Todo",
+      "textile": "Textil",
+      "photography": "Fotografía",
+      "performance": "Performance",
+      "installation": "Instalación"
+    }
   },
   "hero": {
     "label": "Artista multidisciplinaria · París",
@@ -45,7 +55,20 @@
     "stat2Label": "Países",
     "stat3Label": "Años de práctica",
     "readBio": "Leer la biografía",
-    "practiceTitle": "Cuatro formas de tocar el mundo"
+    "practiceTitle": "Cuatro formas de tocar el mundo",
+    "tag1": "Artista multidisciplinaria",
+    "tag2": "Arte-terapeuta",
+    "tag3": "Buenos Aires · París",
+    "disc0": "Arte Textil",
+    "disc0sub": "Bordado · Instalación",
+    "disc1": "Fotografía",
+    "disc1sub": "Cianotipo · Wet plate",
+    "disc2": "Performance",
+    "disc2sub": "Cuerpo · Duración",
+    "disc3": "Instalación",
+    "disc3sub": "In situ · Espacio",
+    "disc4": "Arte-terapia",
+    "disc4sub": "Clínica · Mediación"
   },
   "contact": {
     "label": "Contacto",
@@ -73,5 +96,32 @@
   },
   "ticker": {
     "exhibitions": "Exposiciones y Residencias"
+  },
+  "statement": {
+    "label": "Manifiesto",
+    "text": "El cuerpo es el primer archivo. El hilo, la primera escritura. La imagen, la memoria que el tiempo no pudo borrar.",
+    "attribution": "Pilar Olivero — Buenos Aires · París"
+  },
+  "disciplines": {
+    "textile": {
+      "title": "Arte Textil",
+      "subtitle": "Bordado · Instalación · Tejido",
+      "description": "La aguja como herramienta de inscripción. El hilo como lenguaje. Cada puntada es una decisión, una cicatriz, una marca de presencia. Una obra textil que cruza los límites entre artesanía, archivo y gesto político."
+    },
+    "photo": {
+      "title": "Fotografía Alternativa",
+      "subtitle": "Cianotipo · Wet plate · Gelatina de plata",
+      "description": "La luz como memoria. Procesos obsoletos reactivados para sostener lo que lo digital no puede: el grano, el accidente, la huella del cuerpo en la emulsión. La fotografía como contacto, no como captura."
+    },
+    "performance": {
+      "title": "Performance",
+      "subtitle": "Cuerpo · Duración · Ritual",
+      "description": "El cuerpo como sitio primario del conocimiento. La performance como investigación — lenta, duracional, a menudo dolorosa. Actos que rechazan la documentación aunque exigen testigos."
+    },
+    "installation": {
+      "title": "Instalación",
+      "subtitle": "In situ · Espacio · Material",
+      "description": "El espacio vuelto poroso. Instalaciones que activan habitaciones, pasillos, umbrales — convirtiendo la arquitectura en un cuerpo y al visitante en participante. La especificidad del sitio como condición del sentido."
+    }
   }
 }

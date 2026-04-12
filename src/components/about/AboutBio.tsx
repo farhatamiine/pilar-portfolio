@@ -21,19 +21,18 @@ const MOCK_BIO = {
   availability: 'Available for commissions, residencies, and collaborative projects',
 }
 
-const disciplines = [
-  { label: 'Arte Textil', sub: 'Bordado · Instalación' },
-  { label: 'Fotografía', sub: 'Cianotipo · Wet plate' },
-  { label: 'Performance', sub: 'Cuerpo · Duración' },
-  { label: 'Instalación', sub: 'In situ · Espacio' },
-  { label: 'Arte-terapia', sub: 'Clínica · Mediación' },
-]
-
 interface AboutBioProps { aboutPage: AboutPage | null }
 
 export function AboutBio({ aboutPage }: AboutBioProps) {
   const t = useTranslations('about')
   const data = aboutPage ?? MOCK_BIO
+  const disciplines = [
+    { label: t('disc0'), sub: t('disc0sub') },
+    { label: t('disc1'), sub: t('disc1sub') },
+    { label: t('disc2'), sub: t('disc2sub') },
+    { label: t('disc3'), sub: t('disc3sub') },
+    { label: t('disc4'), sub: t('disc4sub') },
+  ]
 
   return (
     <div className="bg-paper">
@@ -44,20 +43,20 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
         {/* Left sticky label column */}
         <div className="lg:sticky lg:top-32">
           <motion.p
-            className="font-mono text-xs tracking-[0.4em] uppercase text-ink/50 mb-6"
+            className="font-mono text-label tracking-label uppercase text-ink/50 mb-6"
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
           >
             {t('bioLabel')}
           </motion.p>
           <motion.h2
-            className="font-cormorant italic text-[clamp(2rem,3.5vw,3.2rem)] text-ink leading-[1.05]"
+            className="font-cormorant italic text-heading text-ink leading-head"
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.7, ease }}
           >
             {data.heading ?? 'Pilar Olivero'}
           </motion.h2>
           {data.subtitle && (
-            <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-ink/50 mt-4 leading-relaxed">
+            <p className="font-mono text-label tracking-meta uppercase text-ink/50 mt-4 leading-relaxed">
               {data.subtitle}
             </p>
           )}
@@ -71,7 +70,7 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
             >
               <span className="inline-flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                <span className="font-mono text-xs tracking-[0.25em] uppercase text-ink/50">
+                <span className="font-mono text-label tracking-label uppercase text-ink/50">
                   {data.availability}
                 </span>
               </span>
@@ -87,7 +86,7 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
           {data.biography ? (
             <RichText
               html={typeof data.biography === 'string' ? data.biography : data.biography.html}
-              className="font-garamond text-[1.1rem] leading-[1.85] text-body-text/80 [&_p]:mb-6 [&_em]:italic [&_strong]:font-semibold"
+              className="font-garamond text-body leading-body text-body-text/80 [&_p]:mb-6 [&_em]:italic [&_strong]:font-semibold"
             />
           ) : null}
         </motion.div>
@@ -101,10 +100,15 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.8, ease }}
           >
-            <span className="font-cormorant italic text-accent text-6xl leading-none select-none">"</span>
-            <p className="font-cormorant italic text-[clamp(1.4rem,2.5vw,2rem)] text-paper/80 leading-[1.5] -mt-6">
-              {data.philosophy}
-            </p>
+            <span className="font-cormorant italic text-accent text-6xl leading-none select-none" aria-hidden>"</span>
+            <div
+              className="font-cormorant italic text-heading text-paper/80 leading-head -mt-6 [&_p]:mb-0"
+              dangerouslySetInnerHTML={{
+                __html: typeof data.philosophy === 'string'
+                  ? data.philosophy
+                  : (data.philosophy as { html: string }).html ?? '',
+              }}
+            />
           </motion.div>
         </div>
       )}
@@ -120,7 +124,7 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
               viewport={{ once: true }} transition={{ delay: i * 0.07, duration: 0.5 }}
             >
               <p className="font-cormorant italic text-xl text-ink mb-1">{d.label}</p>
-              <p className="font-mono text-xs tracking-[0.2em] uppercase text-ink/50">{d.sub}</p>
+              <p className="font-mono text-label tracking-meta uppercase text-ink/50">{d.sub}</p>
             </motion.div>
           ))}
         </div>

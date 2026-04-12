@@ -102,10 +102,11 @@ export default function ContactPage() {
 
               {/* Name */}
               <div className="space-y-2">
-                <label className="block font-mono text-xs tracking-[0.25em] uppercase text-ink/60">
+                <label htmlFor="contact-name" className="block font-mono text-xs tracking-[0.25em] uppercase text-ink/60">
                   {t('name')} <span className="text-accent">*</span>
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
                   required
                   value={form.name}
@@ -117,10 +118,11 @@ export default function ContactPage() {
 
               {/* Email */}
               <div className="space-y-2">
-                <label className="block font-mono text-xs tracking-[0.25em] uppercase text-ink/60">
+                <label htmlFor="contact-email" className="block font-mono text-xs tracking-[0.25em] uppercase text-ink/60">
                   {t('email')} <span className="text-accent">*</span>
                 </label>
                 <input
+                  id="contact-email"
                   type="email"
                   required
                   value={form.email}
@@ -132,10 +134,11 @@ export default function ContactPage() {
 
               {/* Message */}
               <div className="space-y-2">
-                <label className="block font-mono text-xs tracking-[0.25em] uppercase text-ink/60">
+                <label htmlFor="contact-message" className="block font-mono text-xs tracking-[0.25em] uppercase text-ink/60">
                   {t('message')} <span className="text-accent">*</span>
                 </label>
                 <textarea
+                  id="contact-message"
                   required
                   rows={5}
                   value={form.message}

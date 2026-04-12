@@ -11,7 +11,17 @@
     "exploreWork": "Explore work",
     "aboutMe": "About me",
     "scroll": "Scroll",
-    "obraLabel": "Work"
+    "obraLabel": "Work",
+    "archiveLabel": "Archive",
+    "spotlightLabel": "Selected works",
+    "viewWork": "View work",
+    "filters": {
+      "all": "All",
+      "textile": "Textile",
+      "photography": "Photography",
+      "performance": "Performance",
+      "installation": "Installation"
+    }
   },
   "hero": {
     "label": "Multidisciplinary artist · Paris",
@@ -45,7 +55,20 @@
     "stat2Label": "Countries",
     "stat3Label": "Years of practice",
     "readBio": "Read biography",
-    "practiceTitle": "Four ways of touching the world"
+    "practiceTitle": "Four ways of touching the world",
+    "tag1": "Multidisciplinary artist",
+    "tag2": "Art therapist",
+    "tag3": "Buenos Aires · Paris",
+    "disc0": "Textile Art",
+    "disc0sub": "Embroidery · Installation",
+    "disc1": "Photography",
+    "disc1sub": "Cyanotype · Wet plate",
+    "disc2": "Performance",
+    "disc2sub": "Body · Duration",
+    "disc3": "Installation",
+    "disc3sub": "In situ · Space",
+    "disc4": "Art Therapy",
+    "disc4sub": "Clinical · Mediation"
   },
   "contact": {
     "label": "Contact",
@@ -73,5 +96,32 @@
   },
   "ticker": {
     "exhibitions": "Exhibitions & Residencies"
+  },
+  "statement": {
+    "label": "Manifesto",
+    "text": "The body is the first archive. The thread, the first writing. The image, the memory that time could not erase.",
+    "attribution": "Pilar Olivero — Buenos Aires · Paris"
+  },
+  "disciplines": {
+    "textile": {
+      "title": "Textile Art",
+      "subtitle": "Embroidery · Installation · Weaving",
+      "description": "The needle as a tool of inscription. Thread as language. Each stitch is a decision, a scar, a mark of presence. Textile work that crosses the boundaries between craft, archive, and political gesture."
+    },
+    "photo": {
+      "title": "Alternative Photography",
+      "subtitle": "Cyanotype · Wet plate · Silver gelatin",
+      "description": "Light as memory. Obsolete processes reactivated to hold what digital cannot: the grain, the accident, the body's impression on the emulsion. Photography as contact, not capture."
+    },
+    "performance": {
+      "title": "Performance",
+      "subtitle": "Body · Duration · Ritual",
+      "description": "The body as the primary site of knowledge. Performance as research — slow, durational, often painful. Acts that refuse documentation even as they demand witnesses."
+    },
+    "installation": {
+      "title": "Installation",
+      "subtitle": "In situ · Space · Material",
+      "description": "Space made porous. Installations that activate rooms, corridors, thresholds — turning architecture into a body and the visitor into a participant. Site-specificity as a condition of meaning."
+    }
   }
 }

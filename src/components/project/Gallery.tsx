@@ -15,7 +15,7 @@ export function Gallery({ images, title }: GalleryProps) {
   const slides = images.map((img) => ({ src: img.url, width: img.width, height: img.height }))
 
   return (
-    <div className="px-4 md:px-8 mt-16">
+    <div className="px-6 md:px-8 mt-16">
       {/* CSS masonry: 1col <768px, 2col 768-1279px, 3col ≥1280px */}
       <div className="columns-1 sm:columns-2 xl:columns-3 gap-4">
         {images.map((image, i) => (

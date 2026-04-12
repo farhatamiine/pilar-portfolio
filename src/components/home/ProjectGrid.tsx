@@ -1,15 +1,19 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import type { ProjectSummary } from '@/lib/strapi'
 
 interface ProjectGridProps { projects: ProjectSummary[]; locale: string }
 
 export function ProjectGrid({ projects, locale }: ProjectGridProps) {
+  const t = useTranslations('home')
   return (
     <div className="lg:hidden">
       <div className="px-4 pt-8 pb-4">
         <h1 className="font-cormorant text-5xl tracking-wide text-ink">Pilar Olivero</h1>
-        <p className="font-mono text-xs text-muted mt-2 tracking-widest uppercase">Artiste multidisciplinaire · Paris</p>
+        <p className="font-mono text-label text-muted mt-2 tracking-meta uppercase">{t('tagline')}</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-4 py-6">
         {projects.map((project) => (
@@ -26,7 +30,7 @@ export function ProjectGrid({ projects, locale }: ProjectGridProps) {
               )}
             </div>
             <h2 className="font-cormorant text-xl italic text-ink group-hover:text-accent transition-colors">{project.title}</h2>
-            <p className="font-mono text-xs text-muted mt-1">{project.year}</p>
+            <p className="font-mono text-label text-muted mt-1">{project.year}</p>
           </Link>
         ))}
       </div>

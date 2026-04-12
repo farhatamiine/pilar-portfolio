@@ -5,7 +5,29 @@
     "contact": "Contact"
   },
   "home": {
-    "tagline": "Artiste multidisciplinaire · Paris"
+    "tagline": "Artiste multidisciplinaire · Paris",
+    "label": "Artiste multidisciplinaire · Paris",
+    "disciplines": "Photographie hybride · Art textile · Installation",
+    "exploreWork": "Explorer les travaux",
+    "aboutMe": "À propos",
+    "scroll": "Défiler",
+    "obraLabel": "Travaux",
+    "archiveLabel": "Archive",
+    "spotlightLabel": "Œuvres sélectionnées",
+    "viewWork": "Voir l'œuvre",
+    "filters": {
+      "all": "Tous",
+      "textile": "Textile",
+      "photography": "Photographie",
+      "performance": "Performance",
+      "installation": "Installation"
+    }
+  },
+  "hero": {
+    "label": "Artiste multidisciplinaire · Paris",
+    "disciplines": "Photographie hybride · Art textile · Installation",
+    "exploreWork": "Explorer les travaux",
+    "aboutMe": "À propos"
   },
   "project": {
     "next": "Projet suivant",
@@ -17,15 +39,89 @@
     "solo": "Expositions individuelles",
     "collective": "Expositions collectives",
     "residency": "Résidences",
-    "publication": "Publications & conférences"
+    "publication": "Publications & conférences",
+    "profileLabel": "Profil",
+    "bioLabel": "Biographie",
+    "practiceLabel": "Pratique",
+    "cvLabel": "Curriculum",
+    "trajectory": "Trajectoire",
+    "availabilityText": "Disponible pour des commandes, résidences et projets collaboratifs",
+    "bioHeading": "Pilar Olivero",
+    "bioSubtitle": "Artiste multidisciplinaire · Art-thérapeute",
+    "layersTitle": "Une œuvre faite de couches et de temps",
+    "para1": "Pilar Olivero (Buenos Aires, 1988) est une artiste et art-thérapeute dont la pratique se déplace entre l'installation textile, la photographie alternative et la performance durée. Elle vit et travaille à Paris.",
+    "para2": "Formée à l'Universidad Nacional de las Artes de Buenos Aires et à l'École Nationale Supérieure des Beaux-Arts de Paris, son travail s'ancre à l'intersection du corps, de la mémoire et de l'archive.",
+    "stat1Label": "Projets",
+    "stat2Label": "Pays",
+    "stat3Label": "Années de pratique",
+    "readBio": "Lire la biographie",
+    "practiceTitle": "Quatre façons de toucher le monde",
+    "tag1": "Artiste multidisciplinaire",
+    "tag2": "Art-thérapeute",
+    "tag3": "Buenos Aires · Paris",
+    "disc0": "Art Textile",
+    "disc0sub": "Broderie · Installation",
+    "disc1": "Photographie",
+    "disc1sub": "Cyanotype · Wet plate",
+    "disc2": "Performance",
+    "disc2sub": "Corps · Durée",
+    "disc3": "Installation",
+    "disc3sub": "In situ · Espace",
+    "disc4": "Art-thérapie",
+    "disc4sub": "Clinique · Médiation"
   },
   "contact": {
+    "label": "Contact",
+    "heading": "Parlons-en.",
+    "description": "Ouverte aux commandes, résidences, projets collaboratifs et demandes de presse. Je réponds personnellement à tous les messages.",
+    "emailLabel": "E-mail",
+    "instagramLabel": "Instagram",
+    "locationLabel": "Basée à",
+    "locationValue": "Paris, France",
+    "formLabel": "Message",
     "intro": "Disponible pour collaborations, résidences et expositions.",
     "name": "Nom",
     "email": "Adresse e-mail",
     "message": "Message",
     "submit": "Envoyer",
-    "success": "Message envoyé ✓",
-    "error": "Une erreur est survenue. Veuillez réessayer ou écrire directement à"
+    "success": "Message envoyé. Je vous répondrai bientôt.",
+    "successHeading": "Merci.",
+    "error": "Une erreur est survenue. Veuillez écrire directement à"
+  },
+  "collaborate": {
+    "label": "Contact",
+    "heading": "Travaillons ensemble ?",
+    "description": "Ouverte aux commandes, résidences, expositions et projets collaboratifs. Basée à Paris, disponible à l'international.",
+    "cta": "Écrire"
+  },
+  "ticker": {
+    "exhibitions": "Expositions & Résidences"
+  },
+  "statement": {
+    "label": "Manifeste",
+    "text": "Le corps est la première archive. Le fil, la première écriture. L'image, la mémoire que le temps ne put effacer.",
+    "attribution": "Pilar Olivero — Buenos Aires · Paris"
+  },
+  "disciplines": {
+    "textile": {
+      "title": "Art Textile",
+      "subtitle": "Broderie · Installation · Tissage",
+      "description": "L'aiguille comme outil d'inscription. Le fil comme langage. Chaque point est une décision, une cicatrice, une marque de présence. Un travail textile qui traverse les frontières entre artisanat, archive et geste politique."
+    },
+    "photo": {
+      "title": "Photographie Alternative",
+      "subtitle": "Cyanotype · Wet plate · Gélatine argentique",
+      "description": "La lumière comme mémoire. Des procédés obsolètes réactivés pour retenir ce que le numérique ne peut pas : le grain, l'accident, l'empreinte du corps sur l'émulsion. La photographie comme contact, non comme capture."
+    },
+    "performance": {
+      "title": "Performance",
+      "subtitle": "Corps · Durée · Rituel",
+      "description": "Le corps comme site premier de la connaissance. La performance comme recherche — lente, durationnelle, souvent douloureuse. Des actes qui refusent la documentation même en exigeant des témoins."
+    },
+    "installation": {
+      "title": "Installation",
+      "subtitle": "In situ · Espace · Matière",
+      "description": "L'espace rendu poreux. Des installations qui activent des salles, des couloirs, des seuils — transformant l'architecture en un corps et le visiteur en participant. La spécificité du lieu comme condition du sens."
+    }
   }
 }

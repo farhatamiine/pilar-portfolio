@@ -49,8 +49,8 @@ export function AboutHero() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             transition={{ delay: 0.65, duration: 0.7 }}
           >
-            {['Artista multidisciplinaria', 'Arte-terapeuta', 'Buenos Aires · Paris'].map((tag) => (
-              <span key={tag} className="font-mono text-[10px] tracking-[0.25em] uppercase text-paper/40">
+            {([t('tag1'), t('tag2'), t('tag3')] as string[]).map((tag) => (
+              <span key={tag} className="font-mono text-label tracking-label uppercase text-paper/40">
                 {tag}
               </span>
             ))}

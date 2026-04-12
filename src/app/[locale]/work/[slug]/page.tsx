@@ -11,6 +11,8 @@ interface ProjectPageProps {
   params: Promise<{ locale: string; slug: string }>
 }
 
+export const dynamicParams = true
+
 export async function generateStaticParams() {
   const params: { locale: string; slug: string }[] = []
   for (const locale of locales) {
@@ -64,8 +66,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <article>
       <ProjectHero coverImage={project.coverImage} featuredImage={project.featuredImage} title={project.title} />
-      <div className="px-4 md:px-8 max-w-[680px] mx-auto mt-10">
-        <h1 className="font-cormorant italic text-5xl md:text-6xl text-ink leading-tight">{project.title}</h1>
+      <div className="px-6 md:px-8 max-w-[680px] mx-auto mt-10">
+        <h1 className="font-cormorant italic text-headline text-ink leading-display">{project.title}</h1>
         <p className="font-mono text-sm text-muted mt-2">{project.year}{project.subtitle ? ` · ${project.subtitle}` : ''}</p>
       </div>
       <ProjectStatement description={project.description} />

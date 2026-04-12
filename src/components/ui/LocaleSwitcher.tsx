@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useLocale } from 'next-intl'
 import { locales, type Locale } from '../../../i18n'
 
-const LABELS: Record<Locale, string> = { es: 'ES', en: 'EN' }
+const LABELS: Record<Locale, string> = { fr: 'FR', es: 'ES', en: 'EN' }
 
 export function LocaleSwitcher() {
   const fullPathname = usePathname()

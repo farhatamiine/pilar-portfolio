@@ -2,8 +2,10 @@
 
 import Link from 'next/link'
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useRef } from 'react'
+
+const MotionLink = motion(Link)
 
 function MagneticLink({
   href,
@@ -36,7 +38,7 @@ function MagneticLink({
   }
 
   return (
-    <motion.a
+    <MotionLink
       ref={ref}
       href={href}
       style={{ x: springX, y: springY }}
@@ -45,12 +47,13 @@ function MagneticLink({
       className={className}
     >
       {children}
-    </motion.a>
+    </MotionLink>
   )
 }
 
 export function CollaborateCTA() {
   const locale = useLocale()
+  const t = useTranslations('collaborate')
 
   return (
     <section className="relative bg-ink overflow-hidden py-36 md:py-56 px-8 md:px-20">
@@ -63,39 +66,38 @@ export function CollaborateCTA() {
         transition={{ duration: 8, ease: 'easeInOut', repeat: Infinity }}
       >
         <span className="font-cormorant italic text-[clamp(8rem,22vw,18rem)] text-paper/[0.025] leading-none whitespace-nowrap">
-          Colaborar
+          {t('heading')}
         </span>
       </motion.div>
 
       <div className="relative z-10 max-w-3xl">
         <motion.p
-          className="font-mono text-xs tracking-[0.4em] uppercase text-accent/90 mb-10"
+          className="font-mono text-label tracking-label uppercase text-accent/90 mb-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Contacto
+          {t('label')}
         </motion.p>
 
         <motion.h2
-          className="font-cormorant italic text-[clamp(3rem,7vw,7rem)] text-paper leading-[0.95] mb-10"
+          className="font-cormorant italic text-headline text-paper leading-display mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          ¿Trabajamos<br />juntos?
+          {t('heading')}
         </motion.h2>
 
         <motion.p
-          className="font-garamond text-paper/70 text-[1.1rem] leading-relaxed max-w-lg mb-14"
+          className="font-garamond text-paper/70 text-body leading-relaxed max-w-lg mb-14"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.7 }}
         >
-          Open to commissions, residencies, exhibitions, and collaborative projects.
-          Based in Paris, available internationally.
+          {t('description')}
         </motion.p>
 
         <motion.div
@@ -107,15 +109,15 @@ export function CollaborateCTA() {
         >
           <MagneticLink
             href={`/${locale}/contact`}
-            className="inline-flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase bg-accent text-ink px-8 py-4 hover:bg-paper transition-colors group"
+            className="inline-flex items-center gap-3 font-mono text-label tracking-label uppercase bg-accent text-ink px-8 py-4 hover:bg-paper transition-colors group"
           >
-            Escribir
+            {t('cta')}
             <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
           </MagneticLink>
 
           <a
             href="mailto:pilar@pilarolivero.com"
-            className="font-mono text-[10px] tracking-[0.25em] uppercase text-paper/40 hover:text-paper/70 transition-colors"
+            className="font-mono text-label tracking-label uppercase text-paper/40 hover:text-paper/70 transition-colors"
           >
             pilar@pilarolivero.com
           </a>

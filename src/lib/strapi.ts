@@ -16,6 +16,25 @@ async function strapi<T>(path: string): Promise<T> {
   return res.json()
 }
 
+/** Convert an array of relation names to Strapi populate params: populate[0]=a&populate[1]=b */
+function populateParam(fields: string[]): string {
+  return fields.map((f, i) => `populate[${i}]=${encodeURIComponent(f)}`).join('&')
+}
+
+/**
+ * Fetch a collection with locale, falling back to no-locale when the requested
+ * locale has no content (all CMS content currently stored as "en").
+ */
+async function strapiWithLocaleFallback(path: string): Promise<{ data: unknown[] }> {
+  const data = await strapi<{ data: unknown[] }>(path)
+  if ((data.data ?? []).length > 0) return data
+  // Strip the locale=XX param and retry — gets content in whatever locale it was created
+  const fallbackPath = path.replace(/[?&]locale=[^&]*/g, (m) =>
+    m.startsWith('?') ? '?' : ''
+  ).replace(/\?&/, '?').replace(/&&/, '&').replace(/[?&]$/, '')
+  return strapi<{ data: unknown[] }>(fallbackPath)
+}
+
 // ─── Rich text ────────────────────────────────────────────────────────────────
 
 type BlockChild = {
@@ -79,8 +98,10 @@ function blocksToHtml(blocks: StrapiBlock[]): string {
         const alt = b.image.alternativeText ?? ''
         return `<img src="${src}" alt="${alt}" />`
       }
-      default:
-        return block.children ? `<p>${renderChildren(block.children)}</p>` : ''
+      default: {
+        const b = block as { type: string; children?: BlockChild[] }
+        return b.children ? `<p>${renderChildren(b.children)}</p>` : ''
+      }
     }
   }).join('\n')
 }
@@ -202,8 +223,8 @@ function mapProject(item: any): Project {
 }
 
 export async function getAllProjects(locale: string): Promise<ProjectSummary[]> {
-  const data = await strapi<{ data: unknown[] }>(
-    `/projects?locale=${locale}&populate=featuredImage&sort=order:asc&status=published`
+  const data = await strapiWithLocaleFallback(
+    `/projects?locale=${locale}&populate[0]=featuredImage&sort=order:asc&status=published`
   )
   return (data.data ?? []).map(mapProjectSummary)
 }
@@ -216,8 +237,9 @@ export async function getAllProjectSlugs(): Promise<string[]> {
 }
 
 export async function getProjectBySlug(slug: string, locale: string): Promise<Project | null> {
-  const data = await strapi<{ data: unknown[] }>(
-    `/projects?locale=${locale}&filters[slug][$eq]=${encodeURIComponent(slug)}&populate=featuredImage,coverImage,gallery&status=published`
+  const populate = populateParam(['featuredImage', 'coverImage', 'gallery'])
+  const data = await strapiWithLocaleFallback(
+    `/projects?locale=${locale}&filters[slug][$eq]=${encodeURIComponent(slug)}&${populate}&status=published`
   )
   const item = (data.data ?? [])[0]
   return item ? mapProject(item) : null
@@ -237,9 +259,13 @@ export interface AboutPage {
 
 export async function getAboutPage(locale: string): Promise<AboutPage | null> {
   try {
-    const data = await strapi<{ data: unknown }>(
-      `/about-page?locale=${locale}&populate=profileImage`
+    let data = await strapi<{ data: unknown }>(
+      `/about-page?locale=${locale}&populate[0]=profileImage`
     )
+    // Fall back to no-locale if no data for the requested locale
+    if (!data.data) {
+      data = await strapi<{ data: unknown }>('/about-page?populate[0]=profileImage')
+    }
     const item = data.data as Record<string, unknown> | null
     if (!item) return null
     return {

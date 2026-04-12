@@ -4,13 +4,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import type { ProjectSummary } from '@/lib/strapi'
 
 interface SpotlightSectionProps { projects: ProjectSummary[] }
 
 export function SpotlightSection({ projects }: SpotlightSectionProps) {
   const locale = useLocale()
+  const t = useTranslations('home')
   // Pick 3 to spotlight — featured if available, else first 3
   const spotlit = projects.filter(p => (p as any).featured).slice(0, 3)
   const display = spotlit.length >= 2 ? spotlit : projects.slice(0, 3)
@@ -18,12 +19,12 @@ export function SpotlightSection({ projects }: SpotlightSectionProps) {
   return (
     <section className="bg-ink py-28 md:py-44 px-8 md:px-20 overflow-hidden">
       <motion.p
-        className="font-mono text-[9px] tracking-[0.4em] uppercase text-accent/90 mb-12"
+        className="font-mono text-label tracking-label uppercase text-accent/90 mb-12"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        Obras seleccionadas
+        {t('spotlightLabel')}
       </motion.p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 items-end">
@@ -75,7 +76,7 @@ function SpotlightCard({
           )}
 
           {/* Number overlay */}
-          <span className="absolute top-5 left-5 font-mono text-[10px] text-paper/70 tracking-widest">
+          <span className="absolute top-5 left-5 font-mono text-label text-paper/70 tracking-widest">
             {String(project.order ?? index + 1).padStart(2, '0')}
           </span>
 
@@ -92,10 +93,10 @@ function SpotlightCard({
 
         {/* Title */}
         <div>
-          <p className="font-mono text-[11px] tracking-widest uppercase text-paper/60 mb-2">
+          <p className="font-mono text-label tracking-label uppercase text-paper/60 mb-2">
             {project.year}{project.subtitle ? ` · ${project.subtitle.split(' · ')[0]}` : ''}
           </p>
-          <h3 className="font-cormorant text-2xl text-paper group-hover:italic transition-all duration-200">
+          <h3 className="font-cormorant text-subhead text-paper group-hover:italic transition-all duration-200">
             {project.title}
           </h3>
           {project.shortDescription && (

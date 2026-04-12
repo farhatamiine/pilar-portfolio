@@ -2,17 +2,14 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-
-const words = [
-  'El', 'cuerpo', 'es', 'el', 'primer', 'archivo.',
-  'El', 'hilo,', 'la', 'primera', 'escritura.',
-  'La', 'imagen,', 'la', 'memoria', 'que', 'el', 'tiempo', 'no', 'pudo', 'borrar.',
-]
+import { useTranslations } from 'next-intl'
 
 export function StatementSection() {
   const ref = useRef<HTMLElement>(null)
+  const t = useTranslations('statement')
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], [40, -40])
+  const words = t('text').split(' ')
 
   return (
     <section ref={ref} className="relative bg-ink overflow-hidden py-32 md:py-48 px-8 md:px-20">
@@ -27,17 +24,17 @@ export function StatementSection() {
 
         {/* Label */}
         <motion.p
-          className="font-mono text-xs tracking-[0.4em] uppercase text-accent mb-12"
+          className="font-mono text-label tracking-label uppercase text-accent mb-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Manifiesto
+          {t('label')}
         </motion.p>
 
         {/* Word-by-word reveal */}
-        <p className="font-cormorant italic text-[clamp(2rem,5vw,4.5rem)] leading-[1.15] text-paper/90 flex flex-wrap gap-x-[0.35em]">
+        <p className="font-cormorant italic text-title leading-head text-paper/90 flex flex-wrap gap-x-[0.35em]">
           {words.map((word, i) => (
             <motion.span
               key={i}
@@ -60,8 +57,8 @@ export function StatementSection() {
           transition={{ delay: 0.9, duration: 0.6 }}
         >
           <div className="h-px w-12 bg-accent/50" />
-          <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted">
-            Pilar Olivero — Buenos Aires · Paris
+          <span className="font-mono text-label tracking-label uppercase text-muted">
+            {t('attribution')}
           </span>
         </motion.div>
       </div>

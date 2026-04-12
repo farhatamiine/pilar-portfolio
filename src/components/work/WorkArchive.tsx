@@ -4,13 +4,21 @@ import { useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import type { ProjectSummary } from '@/lib/strapi'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
 const FILTERS = ['All', 'Textile', 'Photography', 'Performance', 'Installation'] as const
 type Filter = (typeof FILTERS)[number]
+
+const FILTER_KEYS: Record<Filter, string> = {
+  All: 'filters.all',
+  Textile: 'filters.textile',
+  Photography: 'filters.photography',
+  Performance: 'filters.performance',
+  Installation: 'filters.installation',
+}
 
 // Derive category from subtitle (mock data only — real data uses Category relation)
 function getCategory(project: ProjectSummary): string {
@@ -26,6 +34,7 @@ interface WorkArchiveProps { projects: ProjectSummary[] }
 
 export function WorkArchive({ projects }: WorkArchiveProps) {
   const locale = useLocale()
+  const t = useTranslations('home')
   const [filter, setFilter] = useState<Filter>('All')
 
   const visible = filter === 'All'
@@ -39,17 +48,17 @@ export function WorkArchive({ projects }: WorkArchiveProps) {
       <div className="px-8 md:px-20 pt-36 pb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
         <div>
           <motion.p
-            className="font-mono text-xs tracking-[0.4em] uppercase text-ink/50 mb-4"
+            className="font-mono text-label tracking-label uppercase text-ink/50 mb-4"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}
           >
-            Archivo
+            {t('archiveLabel')}
           </motion.p>
           <motion.h1
-            className="font-cormorant italic text-[clamp(3rem,6vw,5.5rem)] text-ink leading-[0.95]"
+            className="font-cormorant italic text-headline text-ink leading-display"
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease }}
           >
-            Obra
+            {t('obraLabel')}
           </motion.h1>
         </div>
 
@@ -62,13 +71,13 @@ export function WorkArchive({ projects }: WorkArchiveProps) {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`font-mono text-xs tracking-[0.3em] uppercase px-4 py-2 border transition-colors ${
+              className={`font-mono text-label tracking-label uppercase px-4 py-2 border transition-colors ${
                 filter === f
                   ? 'border-ink bg-ink text-paper'
                   : 'border-grain text-ink/50 hover:border-accent hover:text-accent'
               }`}
             >
-              {f}
+              {t(FILTER_KEYS[f] as Parameters<typeof t>[0])}
             </button>
           ))}
         </motion.div>
@@ -97,6 +106,7 @@ export function WorkArchive({ projects }: WorkArchiveProps) {
 }
 
 function ProjectCard({ project, index, locale }: { project: ProjectSummary; index: number; locale: string }) {
+  const t = useTranslations('home')
   const cardRef = useRef<HTMLDivElement>(null)
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
@@ -147,7 +157,7 @@ function ProjectCard({ project, index, locale }: { project: ProjectSummary; inde
             </motion.div>
           ) : (
             <div className="absolute inset-0 flex items-center justify-center p-6">
-              <span className="font-cormorant italic text-ink/50 text-center text-xl">{project.title}</span>
+              <span className="font-cormorant italic text-ink/50 text-center text-subhead">{project.title}</span>
             </div>
           )}
 
@@ -155,8 +165,8 @@ function ProjectCard({ project, index, locale }: { project: ProjectSummary; inde
           <motion.div
             className="absolute inset-0 bg-ink/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           >
-            <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-paper border border-paper/60 px-5 py-2.5">
-              Ver obra
+            <span className="font-mono text-label tracking-label uppercase text-paper border border-paper/60 px-5 py-2.5">
+              {t('viewWork')}
             </span>
           </motion.div>
         </div>
@@ -164,10 +174,10 @@ function ProjectCard({ project, index, locale }: { project: ProjectSummary; inde
         {/* Meta */}
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h2 className="font-cormorant text-[1.4rem] text-ink group-hover:italic transition-all duration-200 leading-snug">
+            <h2 className="font-cormorant text-subhead text-ink group-hover:italic transition-all duration-200 leading-snug">
               {project.title}
             </h2>
-            <p className="font-mono text-[10px] text-ink/50 tracking-wide mt-1">
+            <p className="font-mono text-label text-ink/50 tracking-meta mt-1">
               {project.year}
               {project.subtitle ? ` · ${project.subtitle.split(' · ')[0]}` : ''}
             </p>

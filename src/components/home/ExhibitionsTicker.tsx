@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, useReducedMotion } from 'framer-motion'
 
 const items = [
   'Résidence NY20+ — New York 2025',
@@ -22,18 +22,21 @@ const tickerTransition = { duration: 45, ease: 'linear' as const, repeat: Infini
 export function ExhibitionsTicker() {
   const controls = useAnimation()
   const started = useRef(false)
+  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
-    controls.start({ x: ['0%', '-50%'], transition: tickerTransition })
-    started.current = true
-  }, [controls])
+    if (!shouldReduceMotion) {
+      controls.start({ x: ['0%', '-50%'], transition: tickerTransition })
+      started.current = true
+    }
+  }, [controls, shouldReduceMotion])
 
   return (
     <section className="bg-ink border-y border-accent/20 py-4 overflow-hidden">
       <div
         className="flex items-center overflow-hidden cursor-default"
-        onMouseEnter={() => controls.stop()}
-        onMouseLeave={() => controls.start({ x: ['0%', '-50%'], transition: tickerTransition })}
+        onMouseEnter={() => { if (!shouldReduceMotion) controls.stop() }}
+        onMouseLeave={() => { if (!shouldReduceMotion) controls.start({ x: ['0%', '-50%'], transition: tickerTransition }) }}
       >
         <motion.div
           className="flex gap-10 shrink-0 whitespace-nowrap"

@@ -36,10 +36,10 @@ export function Hero({ featuredProject }: { featuredProject: ProjectSummary | nu
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease, delay: 0.25 }}
         >
-          <h1 className="font-cormorant italic text-[clamp(4rem,9vw,8rem)] leading-[0.9] text-paper tracking-tight">
+          <h1 className="font-cormorant italic text-display leading-display text-paper tracking-tight">
             Pilar<br />Olivero
           </h1>
-          <p className="font-garamond text-[clamp(0.95rem,1.2vw,1.1rem)] text-paper/75 mt-6 tracking-wide">
+          <p className="font-garamond text-body text-paper/75 mt-6 tracking-wide">
             {t('disciplines')}
           </p>
         </motion.div>

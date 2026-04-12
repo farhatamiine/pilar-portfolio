@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useRef, useEffect } from 'react'
 
 const processImages = [
@@ -34,6 +34,7 @@ function CountUp({ target, suffix = '' }: { target: number; suffix?: string }) {
 
 export function ProcessSection() {
   const locale = useLocale()
+  const t = useTranslations('about')
 
   return (
     <section className="bg-paper py-28 md:py-44 px-8 md:px-20">
@@ -42,22 +43,22 @@ export function ProcessSection() {
         {/* Left: text */}
         <div>
           <motion.p
-            className="font-mono text-xs tracking-[0.4em] uppercase text-ink/50 mb-8"
+            className="font-mono text-label tracking-label uppercase text-ink/50 mb-8"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            Sobre la práctica
+            {t('practiceLabel')}
           </motion.p>
 
           <motion.h2
-            className="font-cormorant text-[clamp(2.2rem,4vw,4rem)] text-ink leading-[1.05] mb-8"
+            className="font-cormorant text-title text-ink leading-head mb-8"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            Un trabajo hecho<br />de <span className="italic">capas y tiempo</span>
+            {t('layersTitle')}
           </motion.h2>
 
           <motion.div
@@ -67,15 +68,11 @@ export function ProcessSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.7 }}
           >
-            <p className="font-garamond text-[1.05rem] text-body-text/80 leading-[1.8]">
-              Pilar Olivero is an Argentine multidisciplinary artist and art therapist based in Paris.
-              Her practice moves fluidly between textile installation, alternative photography,
-              and durational performance — always returning to the body as its primary archive.
+            <p className="font-garamond text-body text-body-text/80 leading-body">
+              {t('para1')}
             </p>
-            <p className="font-garamond text-[1.05rem] text-body-text/80 leading-[1.8]">
-              Trained at the Universidad Nacional de las Artes in Buenos Aires and the École Nationale
-              Supérieure des Beaux-Arts in Paris, her work has been shown across Argentina, France,
-              and the United States.
+            <p className="font-garamond text-body text-body-text/80 leading-body">
+              {t('para2')}
             </p>
           </motion.div>
 
@@ -88,15 +85,15 @@ export function ProcessSection() {
             transition={{ delay: 0.35, duration: 0.6 }}
           >
             {[
-              { target: 11, suffix: '', label: 'Proyectos' },
-              { target: 3, suffix: '', label: 'Países' },
-              { target: 10, suffix: '+', label: 'Años de práctica' },
+              { target: 11, suffix: '', label: t('stat1Label') },
+              { target: 7, suffix: '', label: t('stat2Label') },
+              { target: 10, suffix: '+', label: t('stat3Label') },
             ].map(stat => (
               <div key={stat.label}>
                 <p className="font-cormorant italic text-[2.5rem] text-ink leading-none">
                   <CountUp target={stat.target} suffix={stat.suffix} />
                 </p>
-                <p className="font-mono text-xs tracking-[0.25em] uppercase text-ink/50 mt-1">{stat.label}</p>
+                <p className="font-mono text-label tracking-label uppercase text-ink/50 mt-1">{stat.label}</p>
               </div>
             ))}
           </motion.div>
@@ -110,9 +107,9 @@ export function ProcessSection() {
           >
             <Link
               href={`/${locale}/about`}
-              className="inline-flex items-center gap-3 font-mono text-[10px] tracking-[0.3em] uppercase text-ink border border-grain px-6 py-3 hover:border-accent hover:text-accent transition-colors group"
+              className="inline-flex items-center gap-3 font-mono text-label tracking-label uppercase text-ink border border-grain px-6 py-3 hover:border-accent hover:text-accent transition-colors group"
             >
-              Leer la biografía
+              {t('readBio')}
               <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
             </Link>
           </motion.div>

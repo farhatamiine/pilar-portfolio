@@ -8,8 +8,8 @@ import { useTranslations } from 'next-intl'
 
 interface NavProps { locale: string }
 
-const locales = ['en', 'es'] as const
-const labels = { en: 'EN', es: 'ES' }
+const locales = ['fr', 'es', 'en'] as const
+const labels = { fr: 'FR', en: 'EN', es: 'ES' }
 const pages = ['work', 'about', 'contact'] as const
 
 export function Nav({ locale }: NavProps) {
@@ -159,7 +159,7 @@ export function Nav({ locale }: NavProps) {
                 >
                   <Link
                     href={`/${locale}/${key}`}
-                    className="font-cormorant italic text-[2.8rem] text-paper hover:text-accent transition-colors leading-none"
+                    className="font-cormorant italic text-heading text-paper hover:text-accent transition-colors leading-none"
                   >
                     {t(key)}
                   </Link>
