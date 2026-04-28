@@ -81,7 +81,7 @@ export default function ContactPage() {
                 <motion.div className="space-y-7 mt-16" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 0.6 }}>
                     {(
                         [
-                            { label: t('emailLabel'), value: 'pilar@pilarolivero.com', href: 'mailto:pilar@pilarolivero.com' },
+                            { label: t('emailLabel'), value: 'mariapilarolivero@gmail.com', href: 'mailto:mariapilarolivero@gmail.com' },
                             { label: t('instagramLabel'), value: '@pilarolivero', href: 'https://instagram.com/pilarolivero_' },
                             { label: t('locationLabel'), value: t('locationValue'), href: null },
                         ] as const
@@ -185,8 +185,8 @@ export default function ContactPage() {
                             {status === 'error' && (
                                 <p className="font-mono text-xs text-red-700 tracking-wide">
                                     {t('error')}{' '}
-                                    <a href="mailto:pilar@pilarolivero.com" className="underline underline-offset-2">
-                                        pilar@pilarolivero.com
+                                    <a href="mailto:mariapilarolivero@gmail.com" className="underline underline-offset-2">
+                                        mariapilarolivero@gmail.com
                                     </a>
                                 </p>
                             )}
