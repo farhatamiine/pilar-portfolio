@@ -10,7 +10,7 @@ import { setRequestLocale } from 'next-intl/server'
 const getCachedProject = cache(getProjectBySlug)
 import { ProjectHero } from '@/components/project/ProjectHero'
 import { ProjectStatement } from '@/components/project/ProjectStatement'
-import { Gallery } from '@/components/project/Gallery'
+import { ProjectImageGallery } from '@/components/project/ProjectImageGallery'
 import { ProjectNav } from '@/components/project/ProjectNav'
 import { ReadingProgress } from '@/components/project/ReadingProgress'
 
@@ -86,7 +86,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </p>
       </div>
       <ProjectStatement description={project.description} />
-      <Gallery images={project.gallery} title={project.title} />
+      <ProjectImageGallery images={project.gallery} title={project.title} />
       <ProjectNav prev={prev} next={next} locale={locale} />
     </article>
   )

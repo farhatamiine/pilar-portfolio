@@ -123,6 +123,7 @@ function mapMedia(attrs: Record<string, unknown> | null | undefined): HygraphIma
     url: resolveUrl(attrs.url as string),
     width: (attrs.width as number) ?? 0,
     height: (attrs.height as number) ?? 0,
+    alternativeText: (attrs.alternativeText as string) ?? null,
   }
 }
 
@@ -150,6 +151,7 @@ export interface HygraphImage {
   url: string
   width: number
   height: number
+  alternativeText?: string | null
 }
 
 export interface HygraphAsset extends HygraphImage {
