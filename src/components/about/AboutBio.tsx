@@ -7,25 +7,11 @@ import type { AboutPage } from '@/lib/strapi'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
-// Mock bio content when CMS has no data
-const MOCK_BIO = {
-  heading: 'Pilar Olivero',
-  subtitle: 'Artista multidisciplinaria · Arte-terapeuta',
-  shortBio: 'Argentine multidisciplinary artist and art therapist based in Paris.',
-  biography: `
-    <p>Pilar Olivero (Buenos Aires, 1988) is an artist and art therapist whose practice moves between textile installation, alternative photography, and durational performance. She lives and works in Paris.</p>
-    <p>Trained at the Universidad Nacional de las Artes in Buenos Aires and the École Nationale Supérieure des Beaux-Arts in Paris, her work is grounded in the intersection of body, memory, and archive. She is interested in the ways in which matter — thread, silver, light — can hold what language cannot.</p>
-    <p>Her works have been exhibited across Argentina, France, and the United States. She is a founding member of the collective <em>Cuerpos en tránsito</em>, and has received support from the Institut français, the Fondation des Artistes, and the Fondo Nacional de las Artes.</p>
-  `,
-  philosophy: `<p>The body is the primary archive. Everything I make begins there — in the sensation of thread against skin, in the chemical reaction of light on emulsion, in the duration of a held gesture. I am not interested in representation. I am interested in presence.</p>`,
-  availability: 'Available for commissions, residencies, and collaborative projects',
-}
-
 interface AboutBioProps { aboutPage: AboutPage | null }
 
 export function AboutBio({ aboutPage }: AboutBioProps) {
   const t = useTranslations('about')
-  const data = aboutPage ?? MOCK_BIO
+  const data = aboutPage
   const disciplines = [
     { label: t('disc0'), sub: t('disc0sub') },
     { label: t('disc1'), sub: t('disc1sub') },
@@ -53,16 +39,16 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.7, ease }}
           >
-            {data.heading ?? 'Pilar Olivero'}
+            {data?.heading ?? 'Pilar Olivero'}
           </motion.h2>
-          {data.subtitle && (
+          {data?.subtitle && (
             <p className="font-mono text-label tracking-meta uppercase text-ink/50 mt-4 leading-relaxed">
               {data.subtitle}
             </p>
           )}
 
           {/* Availability badge */}
-          {data.availability && (
+          {data?.availability && (
             <motion.div
               className="mt-10 border-t border-grain pt-6"
               initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
@@ -83,7 +69,7 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.8, ease, delay: 0.1 }}
         >
-          {data.biography ? (
+          {data?.biography ? (
             <RichText
               html={typeof data.biography === 'string' ? data.biography : data.biography.html}
               className="text-body leading-body text-body-text/80"
@@ -93,7 +79,7 @@ export function AboutBio({ aboutPage }: AboutBioProps) {
       </div>
 
       {/* ── Philosophy pull-quote ───────────────────────── */}
-      {data.philosophy && (
+      {data?.philosophy && (
         <div className="bg-ink px-8 md:px-20 py-20 md:py-28">
           <motion.div
             className="max-w-3xl mx-auto"

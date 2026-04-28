@@ -1,6 +1,4 @@
 // ─── Strapi v5 REST client ────────────────────────────────────────────────────
-// Drop-in replacement for hygraph.ts. All exported types and function
-// signatures are identical so no page/component files need to change.
 
 import { marked } from 'marked'
 

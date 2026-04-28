@@ -11,15 +11,14 @@ export function ProjectHero({ coverImage, featuredImage, title }: ProjectHeroPro
   const image = coverImage ?? featuredImage
   if (!image) {
     return (
-      <div className="w-full h-[60dvh] bg-grain flex items-center justify-center">
+      <div className="w-full h-[55vh] bg-grain flex items-center justify-center">
         <span className="font-cormorant italic text-3xl text-muted">{title}</span>
       </div>
     )
   }
-  const paddingBottom = `${(image.height / image.width) * 100}%`
   return (
-    <div className="w-full relative overflow-hidden" style={{ paddingBottom }}>
-      <Image src={image.url} alt={title} fill priority className="object-cover" sizes="100vw" />
+    <div className="w-full h-[55vh] relative overflow-hidden">
+      <Image src={image.url} alt={title} fill priority className="object-cover object-center" sizes="100vw" />
     </div>
   )
 }

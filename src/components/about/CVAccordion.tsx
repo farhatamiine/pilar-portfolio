@@ -7,22 +7,11 @@ import type { Exhibition } from '@/lib/strapi'
 
 type SectionKey = 'solo' | 'collective'
 
-const MOCK_EXHIBITIONS: Exhibition[] = [
-  { id: '1', title: "Changement d'état",              location: 'Galerie Huit, Paris',                    year: 2025, isCollective: false },
-  { id: '2', title: 'La Tisseuse',                    location: 'Cité des Arts, Paris',                   year: 2025, isCollective: false },
-  { id: '3', title: 'Volver al Gesto',                location: 'Centro Cultural Recoleta, Buenos Aires', year: 2022, isCollective: false },
-  { id: '4', title: 'El torso no miente',             location: 'Espacio Alado, Buenos Aires',            year: 2017, isCollective: false },
-  { id: '5', title: 'Biennale des arts textiles',     location: 'Musée des Tissus, Lyon',                 year: 2023, isCollective: true  },
-  { id: '6', title: 'Corps en transit',               location: 'Palais de Tokyo, Paris',                 year: 2021, isCollective: true  },
-  { id: '7', title: 'Híbrido',                        location: 'Centro de Arte y Fotografía, Madrid',    year: 2022, isCollective: true  },
-  { id: '8', title: 'Habitar los espacios',           location: 'Fundación OSDE, Buenos Aires',           year: 2018, isCollective: true  },
-]
-
 interface CVAccordionProps { exhibitions: Exhibition[] }
 
 export function CVAccordion({ exhibitions }: CVAccordionProps) {
   const t = useTranslations('about')
-  const data = exhibitions.length > 0 ? exhibitions : MOCK_EXHIBITIONS
+  const data = exhibitions
   const [open, setOpen] = useState<Set<SectionKey>>(new Set(['solo']))
 
   const SECTIONS: { key: SectionKey; label: string; isCollective: boolean }[] = [

@@ -7,10 +7,8 @@ import { ProjectGrid } from '@/components/home/ProjectGrid';
 import { ProjectList } from '@/components/home/ProjectList';
 import { SpotlightSection } from '@/components/home/SpotlightSection';
 import { StatementSection } from '@/components/home/StatementSection';
-import { MOCK_PROJECTS } from '@/lib/mock-data';
 import { getAllProjects } from '@/lib/strapi';
-
-const MOCK = process.env.NEXT_PUBLIC_MOCK === 'true';
+import { setRequestLocale } from 'next-intl/server';
 
 interface HomePageProps {
     params: Promise<{ locale: string }>;
@@ -18,7 +16,13 @@ interface HomePageProps {
 
 export default async function HomePage({ params }: HomePageProps) {
     const { locale } = await params;
-    const projects = MOCK ? MOCK_PROJECTS : await getAllProjects(locale);
+    setRequestLocale(locale);
+    let projects: Awaited<ReturnType<typeof getAllProjects>> = [];
+    try {
+        projects = await getAllProjects(locale);
+    } catch (err) {
+        console.error('[Home] Strapi fetch failed:', err);
+    }
     const heroProject = projects[0] ?? null;
 
     return (

@@ -3,6 +3,7 @@ import { cache } from 'react'
 import type { Metadata } from 'next'
 import { getAllProjects, getProjectBySlug } from '@/lib/strapi'
 import { locales, type Locale } from '../../../../../i18n'
+import { setRequestLocale } from 'next-intl/server'
 
 // Deduplicate: generateMetadata and the page component both need the project.
 // React.cache memoises the result within a single request so Strapi is only hit once.
@@ -55,6 +56,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { locale, slug } = await params
   if (!locales.includes(locale as Locale)) notFound()
+  setRequestLocale(locale)
 
   // Parallelise — project detail and sibling list are independent requests
   let project
@@ -77,9 +79,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <article>
       <ReadingProgress />
       <ProjectHero coverImage={project.coverImage} featuredImage={project.featuredImage} title={project.title} />
-      <div className="px-6 md:px-8 max-w-[680px] mx-auto mt-10">
+      <div className="px-6 md:px-0 max-w-[720px] mx-auto mt-16 md:mt-20">
         <h1 className="font-cormorant italic text-title text-ink leading-head">{project.title}</h1>
-        <p className="font-mono text-sm text-muted mt-2">{project.year}{project.subtitle ? ` · ${project.subtitle}` : ''}</p>
+        <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted mt-4">
+          {project.year}{project.subtitle ? ` · ${project.subtitle}` : ''}
+        </p>
       </div>
       <ProjectStatement description={project.description} />
       <Gallery images={project.gallery} title={project.title} />
