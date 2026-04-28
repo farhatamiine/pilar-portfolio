@@ -78,7 +78,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <article>
       <ReadingProgress />
-      <ProjectHero coverImage={project.coverImage} featuredImage={project.featuredImage} title={project.title} />
+      <ProjectHero coverImage={project.coverImage} featuredImage={project.featuredImage} title={project.title} focalPoint={project.coverFocalPoint} />
       <div className="px-6 md:px-0 max-w-[720px] mx-auto mt-16 md:mt-20">
         <h1 className="font-cormorant italic text-title text-ink leading-head">{project.title}</h1>
         <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted mt-4">

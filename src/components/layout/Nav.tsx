@@ -18,7 +18,11 @@ export function Nav({ locale }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const t = useTranslations('nav')
 
-  const isHome = pathname === `/${locale}` || pathname === `/${locale}/`
+  const isHome        = pathname === `/${locale}` || pathname === `/${locale}/`
+  const isProjectPage = /\/work\/[^/]+/.test(pathname)
+  // Both home and project detail pages start with a full-bleed image,
+  // so the nav floats transparent over the hero and turns solid on scroll
+  const hasHero = isHome || isProjectPage
 
   // Detect scroll past hero
   useEffect(() => {
@@ -30,8 +34,8 @@ export function Nav({ locale }: NavProps) {
   // Close mobile menu on route change
   useEffect(() => { setMenuOpen(false) }, [pathname])
 
-  // Solid nav: always on inner pages OR when scrolled past hero on home
-  const solid = !isHome || scrolled
+  // Solid nav: always on pages without a hero, or when scrolled past the hero
+  const solid = !hasHero || scrolled
 
   const restPath = pathname.replace(new RegExp(`^/${locale}`), '') || ''
 

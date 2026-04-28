@@ -181,6 +181,8 @@ export interface ProjectSummary {
 export interface Project extends ProjectSummary {
   description: RichTextContent | null
   coverImage: HygraphImage | null
+  /** CSS object-position value set in Strapi, e.g. "center", "top", "50% 30%" */
+  coverFocalPoint: string | null
   gallery: HygraphImage[]
   videoUrl: string | null
   location: string | null
@@ -218,6 +220,7 @@ function mapProject(item: any): Project {
     ...mapProjectSummary(item),
     description: mapRichText(item.description),
     coverImage: mapMedia(item.coverImage),
+    coverFocalPoint: (item.coverFocalPoint as string) ?? null,
     gallery,
     videoUrl: item.videoUrl ?? null,
     location: item.location ?? null,
