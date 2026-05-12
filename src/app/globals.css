@@ -20,6 +20,19 @@
   --font-cormorant: var(--font-cormorant), Georgia, serif;
   --font-garamond:  var(--font-eb-garamond), Georgia, serif;
   --font-mono:      var(--font-dm-mono), monospace;
+
+  --animate-accordion-down: accordion-down 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-accordion-up:   accordion-up   0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
 }
 
 /* ─── Type scale (explicit utilities — @theme silently drops --text-* / --leading-* / --tracking-* in Tailwind v4.2) ── */

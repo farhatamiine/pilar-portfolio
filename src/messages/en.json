@@ -51,8 +51,8 @@
     "bioHeading": "Pilar Olivero",
     "bioSubtitle": "Multidisciplinary artist · Art therapist",
     "layersTitle": "Work made of layers and time",
-    "para1": "Pilar Olivero (Buenos Aires, 1988) is an artist and art therapist whose practice moves between textile installation, alternative photography, and durational performance. She lives and works in Paris.",
-    "para2": "Trained at the Universidad Nacional de las Artes in Buenos Aires and the École Nationale Supérieure des Beaux-Arts in Paris, her work is grounded in the intersection of body, memory, and archive.",
+    "para1": "Pilar Olivero is an artist and art therapist whose practice moves between textile installation, alternative photography, and durational performance. She lives and works in Paris.",
+    "para2": "her work is grounded in the intersection of body, memory, and archive.",
     "stat1Label": "Projects",
     "stat2Label": "Countries",
     "stat3Label": "Years of practice",
@@ -60,7 +60,7 @@
     "practiceTitle": "Four ways of touching the world",
     "tag1": "Multidisciplinary artist",
     "tag2": "Art therapist",
-    "tag3": "Buenos Aires · Paris",
+    "tag3": "Paris",
     "disc0": "Textile Art",
     "disc0sub": "Embroidery · Installation",
     "disc1": "Photography",
@@ -100,12 +100,12 @@
     "exhibitions": "Exhibitions & Residencies"
   },
   "footer": {
-    "location": "Buenos Aires · Paris"
+    "location": "Paris"
   },
   "statement": {
     "label": "Manifesto",
     "text": "The body is the first archive. The thread, the first writing. The image, the memory that time could not erase.",
-    "attribution": "Pilar Olivero — Buenos Aires · Paris"
+    "attribution": "Pilar Olivero - Paris"
   },
   "disciplines": {
     "textile": {
