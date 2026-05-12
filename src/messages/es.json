@@ -51,8 +51,8 @@
     "bioHeading": "Pilar Olivero",
     "bioSubtitle": "Artista multidisciplinaria · Arte-terapeuta",
     "layersTitle": "Un trabajo hecho de capas y tiempo",
-    "para1": "Pilar Olivero (Buenos Aires, 1988) es artista y arte-terapeuta. Su práctica transita entre la instalación textil, la fotografía alternativa y la performance duracional. Vive y trabaja en París.",
-    "para2": "Formada en la Universidad Nacional de las Artes de Buenos Aires y en la École Nationale Supérieure des Beaux-Arts de París, su obra se ancla en la intersección entre cuerpo, memoria y archivo.",
+    "para1": "Pilar Olivero es artista y arte-terapeuta. Su práctica transita entre la instalación textil, la fotografía alternativa y la performance duracional. Vive y trabaja en París.",
+    "para2": "Formada en la Universidad Nacional de las Artes y en la École Nationale Supérieure des Beaux-Arts de París, su obra se ancla en la intersección entre cuerpo, memoria y archivo.",
     "stat1Label": "Proyectos",
     "stat2Label": "Países",
     "stat3Label": "Años de práctica",
@@ -60,7 +60,7 @@
     "practiceTitle": "Cuatro formas de tocar el mundo",
     "tag1": "Artista multidisciplinaria",
     "tag2": "Arte-terapeuta",
-    "tag3": "Buenos Aires · París",
+    "tag3": "París",
     "disc0": "Arte Textil",
     "disc0sub": "Bordado · Instalación",
     "disc1": "Fotografía",
@@ -100,12 +100,12 @@
     "exhibitions": "Exposiciones y Residencias"
   },
   "footer": {
-    "location": "Buenos Aires · París"
+    "location": "París"
   },
   "statement": {
     "label": "Manifiesto",
     "text": "El cuerpo es el primer archivo. El hilo, la primera escritura. La imagen, la memoria que el tiempo no pudo borrar.",
-    "attribution": "Pilar Olivero — Buenos Aires · París"
+    "attribution": "Pilar Olivero — París"
   },
   "disciplines": {
     "textile": {

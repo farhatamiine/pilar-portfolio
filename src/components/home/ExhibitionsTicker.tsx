@@ -6,7 +6,7 @@ import { motion, useAnimation, useReducedMotion } from 'framer-motion'
 const items = [
   'Résidence NY20+ — New York 2025',
   'Cité Internationale des Arts — Paris 2024',
-  'Centro Cultural Recoleta — Buenos Aires 2023',
+  'Centro Cultural Recoleta — Paris 2023',
   'Biennale des arts textiles — Lyon 2023',
   'Galerie du Jeu de Paume — Paris 2022',
   'Espacio Fundación Telefónica — Madrid 2022',

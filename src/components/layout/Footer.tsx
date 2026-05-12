@@ -24,7 +24,7 @@ export function Footer() {
                 transition={{ duration: 0.8, delay: 0.2 }}
             >
                 <a
-                    href="https://instagram.com/pilarolivero__"
+                    href="https://instagram.com/pilarolivero_"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-mono text-xs text-paper/60 hover:text-accent transition-colors duration-300 tracking-meta uppercase"
