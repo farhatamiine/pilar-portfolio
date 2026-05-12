@@ -77,7 +77,27 @@ export function Hero({ featuredProject }: { featuredProject: ProjectSummary | nu
         </motion.div>
       </div>
 
-      {/* ── Right panel: featured image with scroll parallax ── */}
+      {/* ── Background image on mobile (full bleed behind text) ── */}
+      {featuredProject?.featuredImage && (
+        <motion.div
+          className="lg:hidden absolute inset-0 overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.4, ease, delay: 0.05 }}
+        >
+          <Image
+            src={featuredProject.featuredImage.url}
+            alt={featuredProject.title}
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-ink/70" />
+        </motion.div>
+      )}
+
+      {/* ── Right panel: featured image with scroll parallax (desktop) ── */}
       <motion.div
         className="hidden lg:block absolute right-0 top-0 w-[58vw] h-full overflow-hidden"
         initial={{ opacity: 0 }}

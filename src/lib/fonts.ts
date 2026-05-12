@@ -6,7 +6,7 @@ import { Cormorant_Garamond, EB_Garamond, DM_Mono } from 'next/font/google'
 //   --font-dm-mono     → fontFamily.mono
 
 export const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   weight: ['300', '400', '500', '600'],
   style: ['normal', 'italic'],
   variable: '--font-cormorant',
@@ -14,7 +14,7 @@ export const cormorant = Cormorant_Garamond({
 })
 
 export const ebGaramond = EB_Garamond({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   weight: ['400', '500'],
   style: ['normal', 'italic'],
   variable: '--font-eb-garamond',
@@ -22,7 +22,7 @@ export const ebGaramond = EB_Garamond({
 })
 
 export const dmMono = DM_Mono({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   weight: ['300', '400'],
   style: ['normal', 'italic'],
   variable: '--font-dm-mono',
